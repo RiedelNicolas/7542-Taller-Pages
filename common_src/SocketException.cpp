@@ -4,7 +4,7 @@
 
 #include "SocketException.h"
 
-SocketException::SocketException(std::string& error): error(error) {
+SocketException::SocketException(std::string error): error(error) {
 
 }
 

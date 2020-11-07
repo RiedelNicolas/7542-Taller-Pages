@@ -13,6 +13,8 @@
 #include <errno.h>
 #include <cstring>
 
+#include "SocketException.h"
+
 # define INVALID_FD -1
 Socket::Socket() {
     this->fd = INVALID_FD;
@@ -45,6 +47,18 @@ ssize_t Socket::receive(const char *buffer, const size_t &len) {
 
 Socket::Socket(const int &fd) {
     this->fd = fd;
+}
+
+void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char* host) {
+    struct addrinfo hints;
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_flags = AI_PASSIVE;
+    hints.ai_family = AF_INET;
+    hints.ai_socktype = SOCK_STREAM;
+    int error = getaddrinfo(host, port, &hints, result);
+    if(error !=0){
+        throw SocketException( gai_strerror(error) );
+    }
 }
 
 
