@@ -24,6 +24,7 @@ class Socket {
     Socket acceptOne();
     ssize_t send (const char* buffer, const size_t& len);
     ssize_t receive (const char* buffer, const size_t& len);
+    bool valido();
 
     ~Socket();
 };

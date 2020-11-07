@@ -52,7 +52,10 @@ void Socket::listenIncoming() {
 }
 
 Socket Socket::acceptOne() {
-    return Socket();
+    Socket peer ( accept( this->fd, NULL, NULL) );
+    if( !peer.valido() ){
+        throw OSexception(errno);
+    }
 }
 
 ssize_t Socket::send(const char *buffer, const size_t &len) {
@@ -64,6 +67,7 @@ ssize_t Socket::receive(const char *buffer, const size_t &len) {
 }
 
 Socket::Socket(const int &fd) : fd(fd) {
+
 }
 
 //wrapper
@@ -75,6 +79,10 @@ void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char
     hints.ai_socktype = SOCK_STREAM;
     int error = getaddrinfo(host, port, &hints, result);
     if(error != 0) throw SocketException(  gai_strerror(error) );
+}
+
+bool Socket::valido() {
+    return (this->fd == INVALID_FD);
 }
 
 
