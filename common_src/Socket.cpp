@@ -70,12 +70,24 @@ Socket Socket::acceptOne() {
     }
 }
 
-ssize_t Socket::send(const char *buffer, const size_t &len) {
-    return 0;
+void Socket::send(const char *buffer, const size_t &len) {
+    ssize_t sent = 0;
+    while (sent < len) {
+        ssize_t current = ::send(this->fd, buffer + sent, len-sent, MSG_NOSIGNAL);
+        if (current == -1) throw OSexception(errno);
+        sent+=current;
+    }
 }
 
 ssize_t Socket::receive(const char *buffer, const size_t &len) {
-    return 0;
+    ssize_t received = 0;
+    while (received < len) {
+        ssize_t current = recv(this->fd, (void *) &buffer[received], len - received, 0);
+        if (current == -1) throw OSexception(errno);
+        if (current == 0) break;  // se cerro el socket.
+        received+=current;
+    }
+    return received;
 }
 
 Socket::Socket(const int &fd) : fd(fd) {
