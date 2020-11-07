@@ -5,8 +5,14 @@
 #ifndef INC_7542_TALLER_PAGES_SOCKETEXCEPTION_H
 #define INC_7542_TALLER_PAGES_SOCKETEXCEPTION_H
 
+#include <exception>
+#include <string>
 
-class socketException {
+class SocketException: public std::exception {
+ private:
+    std::string error;
+ public:
+    explicit  SocketException(std::string error);
 
 };
 
