@@ -23,8 +23,20 @@ Socket::Socket() {
     this->fd = INVALID_FD;
 }
 
-void Socket::connect(std::string host, std::string port) {
-
+void Socket::connectTo(std::string host, std::string port) {
+    struct addrinfo  *result, *current;
+    _getaddrinfo(&result, port.c_str(), host.c_str());
+    for (current = result; current !=NULL ; current = current->ai_next) {
+        this->fd = socket(current->ai_family,
+                          current->ai_socktype, current->ai_protocol);
+        if (this->fd == INVALID_FD) continue;
+        if(connect(this->fd, current->ai_addr, current->ai_addrlen) != -1) break;
+        if(this->fd != INVALID_FD) close(this->fd);
+    }
+    freeaddrinfo(result);
+    if(current == NULL){
+        throw SocketException("Unable to connect\n");
+    }
 }
 
 void Socket::bindToPort(std::string port) {
@@ -67,7 +79,6 @@ ssize_t Socket::receive(const char *buffer, const size_t &len) {
 }
 
 Socket::Socket(const int &fd) : fd(fd) {
-
 }
 
 //wrapper

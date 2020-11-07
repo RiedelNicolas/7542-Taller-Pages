@@ -18,7 +18,7 @@ class Socket {
  public:
     Socket();
 
-    void connect(std::string host, std::string port);
+    void connectTo(std::string host, std::string port);
     void bindToPort(std::string port);
     void listenIncoming();
     Socket acceptOne();
