@@ -4,7 +4,7 @@
 
 #include "Socket.h"
 
-#define _POSIX_C_SOURCE 201112L  // lo vi en ejemplo de catedra.
+ //  #define _POSIX_C_SOURCE 201112L  // lo vi en ejemplo de catedra.
 
 #include <unistd.h>
 #include <sys/socket.h>
@@ -68,11 +68,12 @@ Socket Socket::acceptOne() {
     if( !peer.valido() ){
         throw OSexception(errno);
     }
+    return peer;
 }
 
 void Socket::send(const char *buffer, const size_t &len) {
     ssize_t sent = 0;
-    while (sent < len) {
+    while (sent < (ssize_t) len) {
         ssize_t current = ::send(this->fd, buffer + sent, len-sent, MSG_NOSIGNAL);
         if (current == -1) throw OSexception(errno);
         sent+=current;
@@ -81,7 +82,7 @@ void Socket::send(const char *buffer, const size_t &len) {
 
 ssize_t Socket::receive(const char *buffer, const size_t &len) {
     ssize_t received = 0;
-    while (received < len) {
+    while (received < (ssize_t) len) {
         ssize_t current = recv(this->fd, (void *) &buffer[received], len - received, 0);
         if (current == -1) throw OSexception(errno);
         if (current == 0) break;  // se cerro el socket.
@@ -106,6 +107,13 @@ void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char
 
 bool Socket::valido() {
     return (this->fd == INVALID_FD);
+}
+
+Socket::~Socket() {
+    if( this->valido() ){
+        shutdown(this->fd, SHUT_RDWR);
+        close(this->fd);
+    }
 }
 
 
