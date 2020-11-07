@@ -49,6 +49,7 @@ Socket::Socket(const int &fd) {
     this->fd = fd;
 }
 
+//wrapper
 void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char* host) {
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
@@ -56,9 +57,7 @@ void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     int error = getaddrinfo(host, port, &hints, result);
-    if(error !=0){
-        throw SocketException( gai_strerror(error) );
-    }
+    if(error != 0) throw SocketException(  gai_strerror(error) );
 }
 
 
