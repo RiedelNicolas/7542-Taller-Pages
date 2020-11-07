@@ -12,8 +12,8 @@ class SocketException: public std::exception {
  private:
     std::string error;
  public:
-    explicit  SocketException(std::string error);
-
+    explicit  SocketException(std::string& error);
+     const char * what() override ;
 };
 
 
