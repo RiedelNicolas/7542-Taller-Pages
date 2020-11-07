@@ -19,8 +19,8 @@ class Socket {
     Socket();
 
     void connect(std::string host, std::string port);
-    void bind(std::string port);
-    void listen();
+    void bindToPort(std::string port);
+    void listenIncoming();
     Socket acceptOne();
     ssize_t send (const char* buffer, const size_t& len);
     ssize_t receive (const char* buffer, const size_t& len);
