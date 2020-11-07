@@ -3,24 +3,13 @@ project(7542_Taller_Pages)
 
 set(CMAKE_CXX_STANDARD 14)
 
-file(GLOB common_src
-        "*.h"
-        "*.cpp"
-        )
+set(COMMON common_src/OSexception.cpp common_src/OSexception.h common_src/Socket.cpp common_src/Socket.h common_src/SocketException.cpp
+            common_src/Socket.h)
 
-file(GLOB server_src
-        "*.h"
-        "*.cpp"
-        )
 
-file(GLOB client_src
-        "*.h"
-        "*.cpp"
-        )
+add_executable(client ${COMMON} client_src/main.cpp  )
 
-add_executable(client client_src ${client_src} ${common_src} )
-
-add_executable(server server_src ${client_src} ${server_src} )
+add_executable(server ${COMMON}  server_src/main.cpp )
 
 
 target_compile_options (client PRIVATE -std=c++11 -Wall -Werror -pedantic -pedantic-errors
