@@ -13,7 +13,7 @@ class SocketException: public std::exception {
     std::string error;
  public:
     explicit  SocketException(std::string& error);
-     const char * what() override ;
+     const char* what() const noexcept override;
 };
 
 

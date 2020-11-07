@@ -8,9 +8,10 @@ SocketException::SocketException(std::string& error): error(error) {
 
 }
 
-const char *SocketException::what() {
+const char *SocketException::what() const {
     return this->error.c_str();
 }
+
 
 
 
