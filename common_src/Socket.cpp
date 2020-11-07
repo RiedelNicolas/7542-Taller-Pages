@@ -11,6 +11,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <errno.h>
+#include <cstring>
 
 # define INVALID_FD -1
 Socket::Socket() {
@@ -46,15 +47,8 @@ Socket::Socket(const int &fd) {
     this->fd = fd;
 }
 
-void Socket::_getaddrinfoBind(struct addrinfo **result, std::string port) {
 
-}
 
-void Socket::_getaddrinfoConnect(struct addrinfo **result, std::string host,
-                                                            std::string port) {
 
-}
 
-void Socket::_getaddrinfo() &{
 
-}

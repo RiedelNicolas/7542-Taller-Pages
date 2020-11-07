@@ -12,9 +12,8 @@ class Socket {
  private:
     int fd;
     explicit Socket(const int& fd);
-    void _getaddrinfoBind(struct addrinfo  **result, std::string port);
-    void _getaddrinfoConnect(struct addrinfo  **result, std::string host,
-                                                std::string port);
+    void _getaddrinfo(struct addrinfo  **result, const char* port,
+                                        const char* host = NULL );
 
  public:
     Socket();
