@@ -3,4 +3,32 @@ project(7542_Taller_Pages)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(7542_Taller_Pages main.cpp common_src/Socket.cpp common_src/Socket.h common_src/SocketException.cpp common_src/SocketException.h common_src/OSexception.cpp common_src/OSexception.h server_src/main.cpp client_src/main.cpp)
+file(GLOB common_src
+        "*.h"
+        "*.cpp"
+        )
+
+file(GLOB server_src
+        "*.h"
+        "*.cpp"
+        )
+
+file(GLOB client_src
+        "*.h"
+        "*.cpp"
+        )
+
+add_executable(client client_src ${client_src} ${common_src} )
+
+add_executable(server server_src ${client_src} ${server_src} )
+
+
+target_compile_options (client PRIVATE -std=c++11 -Wall -Werror -pedantic -pedantic-errors
+        -O0 -ggdb -DDEBUG -fno-inline)
+
+target_link_options(client PRIVATE -lm)
+
+target_compile_options (server PRIVATE -std=c++11 -Wall -Werror -pedantic -pedantic-errors
+        -O0 -ggdb -DDEBUG -fno-inline)
+
+target_link_options(server PRIVATE -lm)
