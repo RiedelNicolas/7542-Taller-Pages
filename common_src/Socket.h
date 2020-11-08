@@ -22,8 +22,8 @@ class Socket {
     void bindToPort(std::string port);
     void listenIncoming();
     Socket acceptOne();
-    void send (const char* buffer, const size_t& len);
-    ssize_t receive (const char* buffer, const size_t& len);
+    void send (const char* buffer, const size_t len);
+    ssize_t receive (const char* buffer, const size_t len);
     bool valido();
     ~Socket();
 };

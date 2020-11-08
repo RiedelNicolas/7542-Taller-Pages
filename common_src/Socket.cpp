@@ -71,7 +71,7 @@ Socket Socket::acceptOne() {
     return peer;
 }
 
-void Socket::send(const char *buffer, const size_t &len) {
+void Socket::send(const char *buffer, const size_t len) {
     ssize_t sent = 0;
     while (sent < (ssize_t) len) {
         ssize_t current = ::send(this->fd, buffer + sent, len-sent, MSG_NOSIGNAL);
@@ -80,7 +80,7 @@ void Socket::send(const char *buffer, const size_t &len) {
     }
 }
 
-ssize_t Socket::receive(const char *buffer, const size_t &len) {
+ssize_t Socket::receive(const char *buffer, const size_t len) {
     ssize_t received = 0;
     while (received < (ssize_t) len) {
         ssize_t current = recv(this->fd, (void *) &buffer[received], len - received, 0);
@@ -106,7 +106,7 @@ void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char
 }
 
 bool Socket::valido() {
-    return (this->fd == INVALID_FD);
+    return (this->fd != INVALID_FD);
 }
 
 Socket::~Socket() {
