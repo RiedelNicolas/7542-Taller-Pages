@@ -10,7 +10,11 @@ RequestsManager::RequestsManager(std::string port) {
 }
 
 void RequestsManager::run() {
-    while(){
+    while( !(this->done) ) {
+        try {
 
+        } catch () {
+
+        }
     }
 }
