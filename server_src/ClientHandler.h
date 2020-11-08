@@ -14,9 +14,9 @@ class ClientHandler : public Thread {
     Socket socket;
     bool done;
  public:
+    ClientHandler();
     void run() override;
     void stop();
-
 };
 
 

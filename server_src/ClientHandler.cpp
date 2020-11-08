@@ -3,3 +3,15 @@
 //
 
 #include "ClientHandler.h"
+
+void ClientHandler::run() {
+
+}
+
+void ClientHandler::stop() {
+    this->done = true;
+}
+
+ClientHandler::ClientHandler() {
+    this->done = false;
+}

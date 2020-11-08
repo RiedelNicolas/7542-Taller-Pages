@@ -116,6 +116,12 @@ Socket::~Socket() {
     }
 }
 
+void Socket::shutDownAndClose() {
+    shutdown(this->fd, SHUT_RDWR);
+    close(this->fd);
+    this->fd = INVALID_FD;
+}
+
 
 
 
