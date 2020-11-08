@@ -9,7 +9,7 @@ set(COMMON common_src/OSexception.cpp common_src/OSexception.h common_src/Socket
 
 add_executable(client ${COMMON} client_src/main.cpp  )
 
-add_executable(server ${COMMON}  server_src/main.cpp server_src/server.cpp server_src/server.h server_src/ClientHandler.cpp server_src/ClientHandler.h)
+add_executable(server ${COMMON}  server_src/main.cpp server_src/server.cpp server_src/server.h server_src/ClientHandler.cpp server_src/ClientHandler.h server_src/RequestsManager.cpp server_src/RequestsManager.h)
 
 
 target_compile_options (client PRIVATE -std=c++11 -Wall -Werror -pedantic -pedantic-errors
