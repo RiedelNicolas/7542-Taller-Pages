@@ -10,7 +10,7 @@
 
 class Controller: Thread {
  private:
-    bool finalizo;
+    bool running;
     const char end;
  public:
     Controller(const char end);
