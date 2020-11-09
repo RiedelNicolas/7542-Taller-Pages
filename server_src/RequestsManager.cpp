@@ -10,11 +10,14 @@ RequestsManager::RequestsManager(std::string port) {
 }
 
 void RequestsManager::run() {
+
     while( !(this->done) ) {
         try {
+            this->clients.push_back(this->peer.acceptOne() );
 
-        } catch () {
-
+        }catch (std::exception& e) {
+            this->done = true;
         }
     }
+
 }
