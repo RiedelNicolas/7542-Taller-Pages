@@ -3,9 +3,13 @@
 //
 
 #include "../common_src/Socket.h"
-
+#include "Controller.h"
 int main(){
-    Socket socket;
+
+    Controller controller('q');
+    controller.
+
+   /* Socket socket;
     socket.bindToPort("8080");
     socket.listenIncoming();
     Socket peer = socket.acceptOne();
@@ -15,4 +19,5 @@ int main(){
     mensaje[recibido] = '\0';
     recibido = peer2.receive(mensaje, 50);
     mensaje[recibido] = '\0';
-}
+    */
+    }

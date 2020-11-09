@@ -14,7 +14,7 @@ private:
     std::thread thread;
 public:
     Thread() = default;
-    void iniciar();
+    void start();
     void join();
     virtual void run() = 0;  // la tienen que implementar los hijos.
     virtual ~Thread() = default;
