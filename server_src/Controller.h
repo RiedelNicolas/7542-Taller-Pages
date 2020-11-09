@@ -13,7 +13,7 @@ class Controller: Thread {
     bool running;
     const char end;
  public:
-    Controller(const char end);
+    explicit Controller(const char end);
     bool done();
     void run() override;
 };
