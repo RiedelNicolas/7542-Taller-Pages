@@ -9,9 +9,13 @@
 #include "../common_src/Thread.h"
 
 class Controller: Thread {
+ private:
     bool finalizo;
     const char end;
-
+ public:
+    Controller(const char end);
+    bool done();
+    void run() override;
 };
 
 
