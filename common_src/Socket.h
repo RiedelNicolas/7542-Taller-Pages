@@ -14,6 +14,7 @@ class Socket {
     explicit Socket(const int& fd);
     void _getaddrinfo(struct addrinfo  **result, const char* port,
                                         const char* host = NULL );
+    void shutDown(const int mode);
 
  public:
     Socket();
@@ -25,7 +26,7 @@ class Socket {
     void send (const char* buffer, const size_t len);
     ssize_t receive (const char* buffer, const size_t len);
     bool valido();
-    void shutDown(const int mode);
+    void endWriting();
     ~Socket();
 };
 

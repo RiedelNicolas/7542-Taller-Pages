@@ -120,6 +120,10 @@ void Socket::shutDown(const int mode) {
     shutdown(this->fd, mode);
 }
 
+void Socket::endWriting() {
+    this->shutDown(SHUT_WR);
+}
+
 
 
 
