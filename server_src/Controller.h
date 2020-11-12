@@ -8,7 +8,7 @@
 
 #include "../common_src/Thread.h"
 
-class Controller: Thread {
+class Controller: public Thread {
  private:
     bool running;
     const char end;

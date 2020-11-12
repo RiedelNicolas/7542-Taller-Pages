@@ -7,7 +7,10 @@
 int main(){
 
     Controller controller('q');
-    controller.
+    controller.start();
+    printf("aca anda suelta xd");
+    controller.join();
+    printf("desbloqueo");
 
    /* Socket socket;
     socket.bindToPort("8080");
