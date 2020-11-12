@@ -26,6 +26,7 @@ class Socket {
     void send (const char* buffer, const size_t len);
     ssize_t receive (const char* buffer, const size_t len);
     bool valido();
+    void receive(std::string& string);
     void endWriting();
     ~Socket();
 };

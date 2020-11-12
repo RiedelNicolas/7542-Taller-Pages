@@ -14,6 +14,7 @@ void Client::connect(char *host, char *port) {
     socket.connectTo(host, port);
     this->readPetition();
     this->sendPetition();
+    socket.endWriting();
     this->receiveResult();
     this->showResult();
 }
@@ -34,12 +35,7 @@ void Client::sendPetition() {
 }
 
 void Client::receiveResult() {
-    char buffer [BUFFER_LEN];
-    ssize_t read;
-    do {
-        read = socket.receive(buffer, BUFFER_LEN);
-        result.append(buffer, read);
-    } while (read == BUFFER_LEN);
+    socket.receive(this->result);
 }
 
 

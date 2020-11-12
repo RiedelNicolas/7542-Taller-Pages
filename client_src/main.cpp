@@ -1,4 +1,5 @@
 
+#include <iostream>
 #include "Client.h"
 #define VALID_ARGS 3
 #define POSHOST 1
@@ -11,7 +12,9 @@ int main(int argc, char *argv[]){
         Client client;
         client.run(argv[POSHOST], argv[POSPORT] );
     } catch (std::exception& e) {
-        e.what();
+        std::cerr << e.what() << std::endl;
+    } catch(...){
+        std::cerr << "Unknown error"<< std::endl;
     }
     return 0;
 }

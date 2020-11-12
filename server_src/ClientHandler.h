@@ -19,9 +19,11 @@ class ClientHandler : public Thread {
     void process();
     void sendResult();
  public:
+
     ClientHandler(Socket socket);
     void run() override;
     void stop();
+    bool isDone();
 };
 
 

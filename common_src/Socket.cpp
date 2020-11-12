@@ -18,6 +18,7 @@
 
 #define INVALID_FD -1
 #define MAX_LISTEN 30
+#define BUFFER_LEN 1024
 
 Socket::Socket() {
     this->fd = INVALID_FD;
@@ -122,6 +123,15 @@ void Socket::shutDown(const int mode) {
 
 void Socket::endWriting() {
     this->shutDown(SHUT_WR);
+}
+
+void Socket::receive(std::string &string) {
+    char buffer [BUFFER_LEN];
+    ssize_t read;
+    do {
+        read = this->receive(buffer, BUFFER_LEN);
+        string.append(buffer, read);
+    } while (read == BUFFER_LEN);
 }
 
 
