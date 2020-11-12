@@ -13,6 +13,11 @@ class ClientHandler : public Thread {
  private:
     Socket socket;
     bool done;
+    std::string petition;
+    std::string result;
+    void receivePetition();
+    void process();
+    void sendResult();
  public:
     ClientHandler(Socket socket);
     void run() override;

@@ -5,9 +5,8 @@
 #include "ClientHandler.h"
 
 void ClientHandler::run() {
-    char mensaje[50];
-    ssize_t recibido = this->socket.receive(mensaje,50);
-    mensaje[recibido] = (char) 0;
+    std::string petition;
+
 }
 
 void ClientHandler::stop() {
