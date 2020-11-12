@@ -11,15 +11,16 @@ void Client::run(char* host, char* port) {
 void Client::connect(char *host, char *port) {
     socket.connectTo(host, port);
     this->readPetition();
-    socket.send(petition.c_str(), petition.length() );
-
+    this->sendPetition();
+    this->receiveResult();
+    this->showResult()
 }
 
 void Client::readPetition() {
     return ;
 }
 
-void Client::showPetition() {
+void Client::showResult() {
     return;
 }
 

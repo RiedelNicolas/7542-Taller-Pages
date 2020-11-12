@@ -12,9 +12,13 @@ class Client {
  private:
     Socket socket;
     std::string petition;
+    std::string result;
     void connect(char* host, char* port);
     void readPetition();
-    void showPetition();
+    void showResult();
+    void sendPetition();
+    void receiveResult();
+
  public:
     void run(char* host, char* port);
 };
