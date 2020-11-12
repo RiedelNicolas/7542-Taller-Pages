@@ -111,15 +111,13 @@ bool Socket::valido() {
 
 Socket::~Socket() {
     if( this->valido() ){
-        shutdown(this->fd, SHUT_RDWR);
+        this->shutDown(SHUT_RDWR);
         close(this->fd);
     }
 }
 
-void Socket::shutDownAndClose() {
-    shutdown(this->fd, SHUT_RDWR);
-    close(this->fd);
-    this->fd = INVALID_FD;
+void Socket::shutDown(const int mode) {
+    shutdown(this->fd, mode);
 }
 
 
