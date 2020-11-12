@@ -11,8 +11,12 @@
 class Client {
  private:
     Socket socket;
+    std::string petition;
+    void connect(char* host, char* port);
+    void readPetition();
+    void showPetition();
  public:
-    run();
+    void run(char* host, char* port);
 };
 
 
