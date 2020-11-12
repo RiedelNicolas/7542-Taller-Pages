@@ -13,7 +13,7 @@ void Client::connect(char *host, char *port) {
     this->readPetition();
     this->sendPetition();
     this->receiveResult();
-    this->showResult()
+    this->showResult();
 }
 
 void Client::readPetition() {
