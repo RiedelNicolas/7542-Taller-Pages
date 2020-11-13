@@ -13,7 +13,8 @@ class PetitionParser {
     std::stringstream petition;
 
  public:
-    PetitionParser(std::string in);
+    explicit PetitionParser(std::string in);
+    std::string getFirstLine();
 };
 
 
