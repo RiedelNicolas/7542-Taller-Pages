@@ -14,10 +14,10 @@ private:
     void _getaddrinfo(struct addrinfo  **result, const char* port,
                                         const char* host = NULL );
     void shutDown(const int mode);
-    explicit Socket (const int fd);
  public:
 
     Socket();
+    explicit Socket (const int fd);
     void connectTo(std::string host, std::string port);
     void bindToPort(std::string port);
     void listenIncoming();
