@@ -24,9 +24,11 @@ class Socket {
     void listenIncoming();
     Socket acceptOne();
     void send (const char* buffer, const size_t len);
+    void send(std:: string string);
     ssize_t receive (const char* buffer, const size_t len);
-    bool valido();
     void receive(std::string& string);
+    bool valido();
+
     void endWriting();
     ~Socket();
 };

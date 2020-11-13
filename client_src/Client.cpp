@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "Client.h"
-#define BUFFER_LEN 64
 
 void Client::run(char* host, char* port) {
     this->connect(host, port);
@@ -20,24 +19,22 @@ void Client::connect(char *host, char *port) {
 }
 
 void Client::readPetition() {
-    int c;
-    while (std::cin >> c){
-        this->petition.push_back(c);
+    char ch;
+    while(std::cin >> ch){
+        petition.push_back(ch);
     }
 }
 
 void Client::showResult() {
-    std::cout << this->result;
+    std::cout << result;
 }
 
 void Client::sendPetition() {
-    socket.send(petition.c_str(), petition.length() );
+    socket.send(result);
 }
 
 void Client::receiveResult() {
-    socket.receive(this->result);
+    socket.receive(result);
 }
-
-
 
 

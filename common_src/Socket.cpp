@@ -134,6 +134,10 @@ void Socket::receive(std::string &string) {
     } while (read == BUFFER_LEN);
 }
 
+void Socket::send(std::string string) {
+    this->send(string.c_str(), string.length());
+}
+
 
 
 
