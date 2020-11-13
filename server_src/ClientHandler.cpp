@@ -7,7 +7,7 @@
 
 void ClientHandler::run() {
     this->receivePetition();
-    std::cout << petition;
+    std::cout << petition<< std::endl;
     this->process();
     this->sendResult();
     socket.endWriting();
@@ -16,6 +16,7 @@ void ClientHandler::run() {
 
 void ClientHandler::stop() {
     this->running = false;
+    socket.close();
 }
 
 ClientHandler::ClientHandler(const int fd): socket(fd) {

@@ -35,7 +35,7 @@ void Socket::connectTo(std::string host, std::string port) {
                           current->ai_socktype, current->ai_protocol);
         if (this->fd == INVALID_FD) continue;
         if(connect(this->fd, current->ai_addr, current->ai_addrlen) != -1) break;
-        if(this->fd != INVALID_FD) close(this->fd);
+        if(this->fd != INVALID_FD) ::close(this->fd);
     }
     freeaddrinfo(result);
     if(current == NULL){
@@ -53,7 +53,7 @@ void Socket::bindToPort(std::string port) {
         int val = 1;
         setsockopt(this->fd, SOL_SOCKET, SO_REUSEADDR, &val, sizeof(val));
         if (bind(this->fd, current->ai_addr, current->ai_addrlen) == 0 ) break;
-        close(this->fd);
+        ::close(this->fd);
     }
     freeaddrinfo(result);
     if(current == NULL){
@@ -113,7 +113,7 @@ bool Socket::valid() {
 Socket::~Socket() {
     if( this->valid() ){
         this->shutDown(SHUT_RDWR);
-        close(this->fd);
+        ::close(this->fd);
         this->fd = -1;
     }
 }
@@ -148,6 +148,14 @@ Socket &Socket::operator=(Socket&& in) noexcept {
     this->fd = in.fd;
     in.fd = INVALID_FD;
     return *this;
+}
+
+void Socket::close(){
+    if( this->valid() ){
+        this->shutDown(SHUT_RDWR);
+        ::close(this->fd);
+        this->fd = -1;
+    }
 }
 
 

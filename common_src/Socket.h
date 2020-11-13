@@ -33,6 +33,7 @@ private:
     Socket& operator=(Socket&&) noexcept;
     Socket (Socket&&) noexcept;
     ~Socket();
+    void close();
 };
 
 
