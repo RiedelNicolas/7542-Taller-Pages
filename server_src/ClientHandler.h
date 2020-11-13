@@ -22,8 +22,8 @@ class ClientHandler : public Thread {
 
     ClientHandler(const int fd);
     void run() override;
-    void stop();
-    bool done();
+    void stop() override;
+    bool done() override;
 };
 
 

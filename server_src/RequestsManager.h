@@ -14,7 +14,7 @@ class RequestsManager: public Thread{
  private:
     Socket peer;
     bool done;
-    std::vector<Threads*> clients;
+    std::vector<Thread*> clients;
     void clean();
     void joinAll();
  public:
