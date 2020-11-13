@@ -17,6 +17,7 @@ public:
     void start();
     void join();
     virtual void run() = 0;  // la tienen que implementar los hijos.
+    virtual void stop() = 0;
     virtual ~Thread() = default;
     Thread(const Thread&) = delete;
     Thread& operator=(const Thread&) = delete;

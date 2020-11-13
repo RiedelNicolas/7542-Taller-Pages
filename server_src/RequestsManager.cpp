@@ -25,6 +25,7 @@ void RequestsManager::run() {
             this->done = true;
         }
     }
+
 }
 
 void RequestsManager::clean() {
@@ -32,5 +33,11 @@ void RequestsManager::clean() {
         if( i.done() ){
             i.join();
         }
+    }
+}
+
+void RequestsManager::joinAll() {
+    for (auto&i : clients ){
+        i.join();
     }
 }
