@@ -9,7 +9,7 @@
 #include <string>
 
 class Socket {
- private:
+private:
     int fd;
     explicit Socket(const int& fd);
     void _getaddrinfo(struct addrinfo  **result, const char* port,
@@ -28,8 +28,8 @@ class Socket {
     ssize_t receive (const char* buffer, const size_t len);
     void receive(std::string& string);
     bool valido();
-
     void endWriting();
+    Socket (Socket&&) noexcept;
     ~Socket();
 };
 

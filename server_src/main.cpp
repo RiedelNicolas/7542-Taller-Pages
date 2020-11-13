@@ -9,10 +9,9 @@
 int main(){
     Socket peer;
     Socket socket;
-    peer.bindToPort("8085");
+    peer.bindToPort("8088");
     peer.listenIncoming();
-    socket = peer.acceptOne();
-    ClientHandler handler(socket);
+    ClientHandler handler( std::move( peer.acceptOne() ) );
     handler.run();
     return 0;
 }

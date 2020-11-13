@@ -138,6 +138,12 @@ void Socket::send(std::string string) {
     this->send(string.c_str(), string.length());
 }
 
+Socket::Socket(Socket && in) noexcept{
+    this->fd = in.fd;
+    in.fd = INVALID_FD;
+}
+
+
 
 
 
