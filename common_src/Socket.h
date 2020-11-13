@@ -14,11 +14,10 @@ private:
     void _getaddrinfo(struct addrinfo  **result, const char* port,
                                         const char* host = NULL );
     void shutDown(const int mode);
-
+    explicit Socket (const int fd);
  public:
 
     Socket();
-    explicit Socket (const int fd);
     void connectTo(std::string host, std::string port);
     void bindToPort(std::string port);
     void listenIncoming();
@@ -27,10 +26,12 @@ private:
     void send(std:: string string);
     ssize_t receive (const char* buffer, const size_t len);
     void receive(std::string& string);
-    bool valido();
+    bool valid();
     void endWriting();
+    Socket(const Socket&) = delete;
+    Socket operator=(const Socket&) = delete;
+    Socket& operator=(Socket&&) noexcept;
     Socket (Socket&&) noexcept;
-    Socket& operator=(Socket&& in);
     ~Socket();
 };
 

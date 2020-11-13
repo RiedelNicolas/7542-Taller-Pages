@@ -13,8 +13,8 @@ void RequestsManager::run() {
 
     while( !(this->done) ) {
         try {
-            Socket temp = this->peer.acceptOne();
-            this->clients.push_back(this->peer.acceptOne() );
+            int temp = this->peer.acceptOne();
+            this->clients.push_back(  ClientHandler (temp)  );
 
         }catch (std::exception& e) {
             this->done = true;

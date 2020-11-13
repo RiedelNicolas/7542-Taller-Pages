@@ -24,6 +24,9 @@ Socket::Socket() {
     this->fd = INVALID_FD;
 }
 
+Socket::Socket(int fd) : fd(fd) {
+}
+
 void Socket::connectTo(std::string host, std::string port) {
     struct addrinfo  *result, *current;
     _getaddrinfo(&result, port.c_str(), host.c_str());
@@ -103,12 +106,12 @@ void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char
     if(error != 0) throw SocketException(  gai_strerror(error) );
 }
 
-bool Socket::valido() {
+bool Socket::valid() {
     return (this->fd != INVALID_FD);
 }
 
 Socket::~Socket() {
-    if( this->valido() ){
+    if( this->valid() ){
         this->shutDown(SHUT_RDWR);
         close(this->fd);
         this->fd = -1;
@@ -136,18 +139,15 @@ void Socket::send(std::string string) {
     this->send(string.c_str(), string.length());
 }
 
-Socket::Socket(Socket && in) noexcept{
+Socket::Socket(Socket&& in) noexcept{
     this->fd = in.fd;
     in.fd = INVALID_FD;
 }
 
-Socket &Socket::operator=(Socket&& in) {
-    *this = std::move(in);
+Socket &Socket::operator=(Socket&& in) noexcept {
+    this->fd = in.fd;
+    in.fd = INVALID_FD;
     return *this;
-}
-
-Socket::Socket(int fd) : fd(fd) {
-
 }
 
 
