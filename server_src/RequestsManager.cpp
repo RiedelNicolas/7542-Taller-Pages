@@ -8,36 +8,53 @@
 RequestsManager::RequestsManager(std::string port) {
     this->peer.bindToPort(port);
     this->peer.listenIncoming();
+    this->running = true;
 }
 
 void RequestsManager::run() {
 
-    while( !(this->done) ) {
+    while( this->running ) {
         try {
             int fd = this->peer.acceptOne();
-            this->clients.push_back( new ClientHandler(fd) );
             this->clean();
+            this->clients.push_back( new ClientHandler(fd) );
+            this->clients.back()->start();
         }catch (std::exception& e) {
             std::cerr << e.what() << std::endl;
 
         } catch (...) {
             std::cerr << "Unknown error"<< std::endl;
-            this->done = true;
         }
     }
+    this->running = false;
+    this->joinAll();
+}
 
+
+
+
+
+void RequestsManager::joinAll() {
+
+    for(size_t i = 0; i < clients.size(); i++ ){
+        clients[i]->join();
+        delete clients[i];
+    }
 }
 
 void RequestsManager::clean() {
-    for (auto&i : clients ){
-        if( i->done() ){
-            i->join();
-        }
+    for(size_t i = 0; i < clients.size(); i++ ){
+        if( clients[i]->done() )
+        clients[i]->join();
     }
 }
 
-void RequestsManager::joinAll() {
-    for (auto&i : clients ){
-        i.join();
-    }
+bool RequestsManager::done() {
+    return !running;
 }
+
+void RequestsManager::stop() {
+    peer.close();
+    this->running = false;
+}
+

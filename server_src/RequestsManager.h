@@ -13,13 +13,15 @@
 class RequestsManager: public Thread{
  private:
     Socket peer;
-    bool done;
+    bool running;
     std::vector<Thread*> clients;
     void clean();
     void joinAll();
  public:
     explicit RequestsManager(std::string port);
     void run() override;
+    bool done() override;
+    void stop() override;
 };
 
 
