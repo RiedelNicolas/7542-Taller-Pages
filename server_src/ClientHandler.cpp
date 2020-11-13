@@ -4,10 +4,12 @@
 
 #include <iostream>
 #include "ClientHandler.h"
+#include "PetitionParser.h"
 
 void ClientHandler::run() {
     this->receivePetition();
-    std::cout << petition<< std::endl;
+    PetitionParser parser(petition);
+    std::cout << parser.getFirstLine();
     this->process();
     this->sendResult();
     socket.endWriting();
