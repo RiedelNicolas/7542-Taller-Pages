@@ -6,8 +6,11 @@
 #define INC_7542_TALLER_PAGES_SERVER_H
 
 
-class server {
+#include <string>
 
+class Server {
+ public:
+    Server(std::string port);
 };
 
 
