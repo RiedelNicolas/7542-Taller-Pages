@@ -7,11 +7,11 @@
 
 int main(int argc, char *argv[]){
     if (argc != VALID_ARGS ) {
-        return  0;
+        return  -1;
     }
     try {
-        Client client;
-        client.run(argv[POSHOST], argv[POSPORT] );
+        Server server(argv[POSHOST]);
+        server();
     } catch (std::exception& e) {
         std::cerr << e.what() << std::endl;
     } catch(...){

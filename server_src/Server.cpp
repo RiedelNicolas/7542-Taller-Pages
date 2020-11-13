@@ -4,10 +4,17 @@
 
 #include "Server.h"
 #include "Controller.h"
+#include "RequestsManager.h"
 
 void Server::operator()() {
     Controller cont('q');
-
+    RequestsManager manager(port);
+    cont.start();
+    manager.start();
+    while(cont.done() == false);
+    cont.join();
+    manager.stop();
+    manager.join();
 }
 
 Server::Server(const std::string& port): port(port) {
