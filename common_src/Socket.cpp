@@ -69,9 +69,6 @@ void Socket::listenIncoming() {
 
 int Socket::acceptOne() {
     int peer =  accept( this->fd, NULL, NULL);
-    if( peer == INVALID_FD ){
-        throw OSexception(errno);
-    }
     return peer;
 }
 

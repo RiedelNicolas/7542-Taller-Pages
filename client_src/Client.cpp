@@ -19,10 +19,7 @@ void Client::connect(char *host, char *port) {
 }
 
 void Client::readPetition() {
-    char ch;
-    while(std::cin >> ch){
-        petition.push_back(ch);
-    }
+    petition << std::cin.rdbuf();
 }
 
 void Client::showResult() {
@@ -30,7 +27,7 @@ void Client::showResult() {
 }
 
 void Client::sendPetition() {
-    socket.send(petition);
+    socket.send( petition.str() );
 }
 
 void Client::receiveResult() {

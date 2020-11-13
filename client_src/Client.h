@@ -7,11 +7,12 @@
 
 
 #include "../common_src/Socket.h"
+#include <sstream>
 
 class Client {
  private:
     Socket socket;
-    std::string petition;
+    std::ostringstream petition;
     std::string result;
     void connect(char* host, char* port);
     void readPetition();

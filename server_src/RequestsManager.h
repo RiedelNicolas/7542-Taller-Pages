@@ -12,7 +12,7 @@
 
 class RequestsManager: public Thread{
  private:
-    Socket peer;
+    Socket socket;
     bool running;
     std::vector<Thread*> clients;
     void clean();
