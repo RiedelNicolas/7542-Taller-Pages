@@ -30,7 +30,7 @@ void Client::showResult() {
 }
 
 void Client::sendPetition() {
-    socket.send(result);
+    socket.send(petition);
 }
 
 void Client::receiveResult() {
