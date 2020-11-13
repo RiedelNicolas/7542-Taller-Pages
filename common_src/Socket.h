@@ -11,18 +11,18 @@
 class Socket {
 private:
     int fd;
-    explicit Socket(const int& fd);
     void _getaddrinfo(struct addrinfo  **result, const char* port,
                                         const char* host = NULL );
     void shutDown(const int mode);
 
  public:
-    Socket();
 
+    Socket();
+    explicit Socket (const int fd);
     void connectTo(std::string host, std::string port);
     void bindToPort(std::string port);
     void listenIncoming();
-    Socket acceptOne();
+    int acceptOne();
     void send (const char* buffer, const size_t len);
     void send(std:: string string);
     ssize_t receive (const char* buffer, const size_t len);
@@ -30,6 +30,7 @@ private:
     bool valido();
     void endWriting();
     Socket (Socket&&) noexcept;
+    Socket& operator=(Socket&& in);
     ~Socket();
 };
 

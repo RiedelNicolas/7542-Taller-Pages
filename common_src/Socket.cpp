@@ -64,9 +64,9 @@ void Socket::listenIncoming() {
     }
 }
 
-Socket Socket::acceptOne() {
-    Socket peer ( accept( this->fd, NULL, NULL) );
-    if( !peer.valido() ){
+int Socket::acceptOne() {
+    int peer =  accept( this->fd, NULL, NULL);
+    if( peer == INVALID_FD ){
         throw OSexception(errno);
     }
     return peer;
@@ -92,9 +92,6 @@ ssize_t Socket::receive(const char *buffer, const size_t len) {
     return received;
 }
 
-Socket::Socket(const int &fd) : fd(fd) {
-}
-
 //wrapper
 void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char* host) {
     struct addrinfo hints;
@@ -114,6 +111,7 @@ Socket::~Socket() {
     if( this->valido() ){
         this->shutDown(SHUT_RDWR);
         close(this->fd);
+        this->fd = -1;
     }
 }
 
@@ -141,6 +139,15 @@ void Socket::send(std::string string) {
 Socket::Socket(Socket && in) noexcept{
     this->fd = in.fd;
     in.fd = INVALID_FD;
+}
+
+Socket &Socket::operator=(Socket&& in) {
+    *this = std::move(in);
+    return *this;
+}
+
+Socket::Socket(int fd) : fd(fd) {
+
 }
 
 
