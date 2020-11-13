@@ -9,7 +9,7 @@
 void ClientHandler::run() {
     this->receivePetition();
     PetitionParser parser(petition);
-    std::cout << parser.getFirstLine();
+    printer.print( parser.getFirstLine() );
     this->process();
     this->sendResult();
     socket.endWriting();
@@ -21,7 +21,8 @@ void ClientHandler::stop() {
     socket.close();
 }
 
-ClientHandler::ClientHandler(const int fd): socket(fd) {
+ClientHandler::ClientHandler(const int fd, PrintMonitor &printer)
+                                        : socket(fd), printer(printer) {
     this->running = true;
 }
 

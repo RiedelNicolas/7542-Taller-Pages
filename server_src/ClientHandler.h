@@ -8,6 +8,7 @@
 
 #include "../common_src/Thread.h"
 #include "../common_src/Socket.h"
+#include "PrintMonitor.h"
 
 class ClientHandler : public Thread {
  private:
@@ -15,12 +16,13 @@ class ClientHandler : public Thread {
     bool running;
     std::string petition;
     std::string result;
+    PrintMonitor& printer;
     void receivePetition();
     void process();
     void sendResult();
  public:
 
-    ClientHandler(const int fd);
+    ClientHandler(const int fd, PrintMonitor& printer);
     void run() override;
     void stop() override;
     bool done() override;

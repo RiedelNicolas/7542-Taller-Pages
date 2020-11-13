@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "RequestsManager.h"
+#include "PrintMonitor.h"
 
 RequestsManager::RequestsManager(std::string port) {
     this->socket.bindToPort(port);
@@ -12,12 +13,12 @@ RequestsManager::RequestsManager(std::string port) {
 }
 
 void RequestsManager::run() {
-
+    PrintMonitor printer;
     while( this->running ) {
         int peer = this->socket.acceptOne();
         this->clean();
         if (peer != -1) {
-            this->clients.push_back( new ClientHandler(peer) );
+            this->clients.push_back( new ClientHandler(peer, printer) );
             clients.back()->start();
         } else {
         this->running = false;

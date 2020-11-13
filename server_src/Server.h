@@ -7,11 +7,16 @@
 
 
 #include <string>
+#include <sstream>
 
 class Server {
     std::string port;
+    std::stringstream stream;
  public:
-    explicit Server(const std::string& port);
+    explicit Server(const std::string& port, const std::string& path);
+
+    Server(const std::stringstream &stream);
+
     void operator()();
 };
 

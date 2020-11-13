@@ -2,6 +2,7 @@
 // Created by riedel on 8/11/20.
 //
 
+#include <fstream>
 #include "Server.h"
 #include "Controller.h"
 #include "RequestsManager.h"
@@ -17,6 +18,10 @@ void Server::operator()() {
     manager.join();
 }
 
-Server::Server(const std::string& port): port(port) {
 
+
+Server::Server(const std::string& port, const std::string& path): port(port) {
+    std::ifstream file( path );
+    stream << file.rdbuf();
+    file.close();
 }
