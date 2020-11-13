@@ -15,10 +15,11 @@ class RequestsManager: public Thread{
     Socket socket;
     bool running;
     std::vector<Thread*> clients;
+    std::stringstream stream;
     void clean();
     void joinAll();
  public:
-    RequestsManager(std::string port);
+    RequestsManager(std::string port, std::string path);
     void run() override;
     bool done() override;
     void stop() override;

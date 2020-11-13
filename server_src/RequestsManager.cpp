@@ -3,13 +3,17 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include "RequestsManager.h"
 #include "PrintMonitor.h"
 
-RequestsManager::RequestsManager(std::string port) {
+RequestsManager::RequestsManager(std::string port, std::string path) {
     this->socket.bindToPort(port);
     this->socket.listenIncoming();
     this->running = true;
+    std::ifstream inFile;
+    inFile.open(path);
+    stream << inFile.rdbuf();
 }
 
 void RequestsManager::run() {
@@ -18,7 +22,7 @@ void RequestsManager::run() {
         int peer = this->socket.acceptOne();
         this->clean();
         if (peer != -1) {
-            this->clients.push_back( new ClientHandler(peer, printer) );
+            this->clients.push_back( new ClientHandler(peer, printer, stream.str() ) );
             clients.back()->start();
         } else {
         this->running = false;

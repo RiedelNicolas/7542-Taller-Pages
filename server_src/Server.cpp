@@ -9,7 +9,7 @@
 
 void Server::operator()() {
     Controller cont('q');
-    RequestsManager manager(port);
+    RequestsManager manager(port, path);
     cont.start();
     manager.start();
     while(cont.done() == false);
@@ -20,8 +20,6 @@ void Server::operator()() {
 
 
 
-Server::Server(const std::string& port, const std::string& path): port(port) {
-    std::ifstream file( path );
-    stream << file.rdbuf();
-    file.close();
+Server::Server(const std::string& port, const std::string& path): port(port),
+                                                                  path(path){
 }

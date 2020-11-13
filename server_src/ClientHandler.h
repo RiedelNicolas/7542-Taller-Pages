@@ -6,6 +6,7 @@
 #define INC_7542_TALLER_PAGES_CLIENTHANDLER_H
 
 
+#include <sstream>
 #include "../common_src/Thread.h"
 #include "../common_src/Socket.h"
 #include "PrintMonitor.h"
@@ -16,13 +17,15 @@ class ClientHandler : public Thread {
     bool running;
     std::string petition;
     std::string result;
+    std::stringstream root;
     PrintMonitor& printer;
     void receivePetition();
     void process();
     void sendResult();
  public:
 
-    ClientHandler(const int fd, PrintMonitor& printer);
+    ClientHandler(const int fd, PrintMonitor& printer,
+                  std::string root);
     void run() override;
     void stop() override;
     bool done() override;

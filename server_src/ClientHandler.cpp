@@ -21,8 +21,11 @@ void ClientHandler::stop() {
     socket.close();
 }
 
-ClientHandler::ClientHandler(const int fd, PrintMonitor &printer)
-                                        : socket(fd), printer(printer) {
+ClientHandler::ClientHandler(const int fd, PrintMonitor& printer,
+                             std::string root)
+                                        : socket(fd),
+                                        root(root),
+                                        printer(printer){
     this->running = true;
 }
 
@@ -31,7 +34,7 @@ void ClientHandler::receivePetition() {
 }
 
 void ClientHandler::process() {
-    result = petition;
+    result = "esta deberia ser la respuesta del servidor";
 }
 
 void ClientHandler::sendResult() {

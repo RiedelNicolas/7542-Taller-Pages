@@ -11,11 +11,9 @@
 
 class Server {
     std::string port;
-    std::stringstream stream;
+    std::string path;
  public:
     explicit Server(const std::string& port, const std::string& path);
-
-    Server(const std::stringstream &stream);
 
     void operator()();
 };
