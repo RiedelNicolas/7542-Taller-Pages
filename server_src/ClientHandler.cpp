@@ -24,13 +24,11 @@ ClientHandler::ClientHandler(const int fd): socket(fd) {
 }
 
 void ClientHandler::receivePetition() {
-    std::string aux;
-    socket.receive(aux);
-    petition = ;
+    socket.receive(petition);
 }
 
 void ClientHandler::process() {
-    result = petition.str();
+    result = petition;
 }
 
 void ClientHandler::sendResult() {
