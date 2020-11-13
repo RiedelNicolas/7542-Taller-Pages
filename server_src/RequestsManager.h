@@ -16,7 +16,7 @@ class RequestsManager: public Thread{
     Socket peer;
     bool done;
     std::list<ClientHandler> clients;
-
+    void clean();
  public:
     explicit RequestsManager(std::string port);
     void run() override;
