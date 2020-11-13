@@ -14,8 +14,9 @@ class Controller: public Thread {
     const char end;
  public:
     explicit Controller(const char end);
-    bool done();
+    bool done () override;
     void run() override;
+    void stop() override;
 };
 
 

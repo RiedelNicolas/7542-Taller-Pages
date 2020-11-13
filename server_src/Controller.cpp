@@ -23,3 +23,7 @@ void Controller::run() {
 
     this->running = false;
 }
+
+void Controller::stop() {
+    this->running = false;
+}

@@ -1,18 +1,21 @@
-//
-// Created by riedel on 7/11/20.
-//
 
-#include "../common_src/Socket.h"
-#include "Controller.h"
-#include "ClientHandler.h"
+#include <iostream>
+#include "Server.h"
+#define VALID_ARGS 3
+#define POSHOST 1
+#define POSPORT 2
 
-int main(){
-    Socket peer;
-    int fd;
-    peer.bindToPort("8090");
-    peer.listenIncoming();
-    fd = peer.acceptOne();
-    ClientHandler handler(fd);
-    handler.run();
+int main(int argc, char *argv[]){
+    if (argc != VALID_ARGS ) {
+        return  0;
+    }
+    try {
+        Client client;
+        client.run(argv[POSHOST], argv[POSPORT] );
+    } catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    } catch(...){
+        std::cerr << "Unknown error"<< std::endl;
+    }
     return 0;
 }

@@ -9,9 +9,10 @@
 #include <string>
 
 class Server {
+    std::string port;
  public:
-    Server(std::string port);
+    explicit Server(const std::string& port);
+    void operator()();
 };
-
 
 #endif //INC_7542_TALLER_PAGES_SERVER_H
