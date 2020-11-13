@@ -9,7 +9,8 @@
 int main(){
     Socket peer;
     Socket socket;
-    peer.bindToPort("8084");
+    peer.bindToPort("8085");
+    peer.listenIncoming();
     socket = peer.acceptOne();
     ClientHandler handler(socket);
     handler.run();
