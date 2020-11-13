@@ -12,7 +12,7 @@
 class ClientHandler : public Thread {
  private:
     Socket socket;
-    bool done;
+    bool running;
     std::string petition;
     std::string result;
     void receivePetition();
@@ -20,10 +20,10 @@ class ClientHandler : public Thread {
     void sendResult();
  public:
 
-    ClientHandler(Socket socket);
+    ClientHandler(const int fd);
     void run() override;
     void stop();
-    bool isDone();
+    bool done();
 };
 
 

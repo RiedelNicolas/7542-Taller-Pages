@@ -15,12 +15,11 @@ void ClientHandler::run() {
 }
 
 void ClientHandler::stop() {
-    this->done = true;
+    this->running = false;
 }
 
-ClientHandler::ClientHandler(Socket socket) {
-    this->done = false;
-    this->socket = socket;
+ClientHandler::ClientHandler(const int fd): socket(fd) {
+    this->running = true;
 }
 
 void ClientHandler::receivePetition() {
@@ -35,6 +34,6 @@ void ClientHandler::sendResult() {
     socket.send(result.c_str(), result.length());
 }
 
-bool ClientHandler::isDone() {
-    return done;
+bool ClientHandler::done() {
+    return !running;
 }
