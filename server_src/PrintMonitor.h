@@ -6,8 +6,13 @@
 #define INC_7542_TALLER_PAGES_PRINTMONITOR_H
 
 
-class printMonitor {
+#include <mutex>
 
+class PrintMonitor {
+ private:
+    std::mutex m;
+ public:
+    void print(std::string in);
 };
 
 
