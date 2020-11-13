@@ -19,5 +19,4 @@ void RequestsManager::run() {
             this->done = true;
         }
     }
-
 }

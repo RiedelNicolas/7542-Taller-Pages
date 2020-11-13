@@ -2,13 +2,16 @@
 // Created by riedel on 8/11/20.
 //
 
+#include <iostream>
 #include "ClientHandler.h"
 
 void ClientHandler::run() {
     this->receivePetition();
+    std::cout << petition;
     this->process();
     this->sendResult();
     socket.endWriting();
+    this->stop();
 }
 
 void ClientHandler::stop() {
