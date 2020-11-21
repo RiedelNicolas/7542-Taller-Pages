@@ -9,8 +9,7 @@
 void Server::operator()() {
     RequestsManager manager(port, path);
     manager.start();
-    while(cont.done() == false);
-    cont.join();
+    waitCharacter('q'); // blocking
     manager.stop();
     manager.join();
 }
@@ -21,8 +20,12 @@ Server::Server(const std::string& port, const std::string& path): port(port),
                                                                   path(path){
 }
 
-void Server::serverWaitCharacter(const char waited) {
-
+void Server::waitCharacter(const char waited) {
+    char c;
+    do {
+        c = getchar();
+    } while (c != waited);
 }
+
 
 
