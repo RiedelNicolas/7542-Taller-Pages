@@ -12,6 +12,7 @@
 class Server {
     std::string port;
     std::string path;
+    serverWaitCharacter(const char waited);
  public:
     explicit Server(const std::string& port, const std::string& path);
 

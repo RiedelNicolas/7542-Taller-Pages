@@ -4,13 +4,10 @@
 
 #include <fstream>
 #include "Server.h"
-#include "Controller.h"
 #include "RequestsManager.h"
 
 void Server::operator()() {
-    Controller cont('q');
     RequestsManager manager(port, path);
-    cont.start();
     manager.start();
     while(cont.done() == false);
     cont.join();
@@ -23,3 +20,9 @@ void Server::operator()() {
 Server::Server(const std::string& port, const std::string& path): port(port),
                                                                   path(path){
 }
+
+void Server::serverWaitCharacter(const char waited) {
+
+}
+
+
