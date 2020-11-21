@@ -9,6 +9,7 @@
 #include "../common_src/Thread.h"
 #include "../common_src/Socket.h"
 #include "ClientHandler.h"
+#include "ResourcesRepository.h"
 
 class RequestsManager: public Thread {
  private:
@@ -16,7 +17,7 @@ class RequestsManager: public Thread {
     bool running;
     PrintMonitor printer;
     std::vector<Thread*> clients;
-    ResourcesMonitor resources;
+    ResourcesRepository resources;
     void clean();
     void joinAll();
  public:
