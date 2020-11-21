@@ -16,7 +16,7 @@ class RequestsManager: public Thread {
     bool running;
     PrintMonitor printer;
     std::vector<Thread*> clients;
-    std::stringstream stream;
+    ResourcesMonitor resources;
     void clean();
     void joinAll();
  public:

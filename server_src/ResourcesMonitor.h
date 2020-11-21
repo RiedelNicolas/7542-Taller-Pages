@@ -10,13 +10,13 @@
 #include <unordered_map>
 #include <mutex>
 
-class resourcesMonitor {
+class ResourcesMonitor {
  private:
     std::string root;
     std::unordered_map <std::string, std::string> map;
     std::mutex m;
  public:
-    resourcesMonitor(const std::string &rootPath);
+    ResourcesMonitor(const std::string &rootPath);
     const std::string& getRoot();
     const std::string& get(const std::string& key);
     void post(const std::string& key, const std::string resource);

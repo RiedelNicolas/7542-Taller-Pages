@@ -9,11 +9,11 @@
 #include <exception>
 #include <string>
 
-class invalidFileException: public std::exception {
+class InvalidFileException: public std::exception {
 private:
     std::string error;
 public:
-    explicit  invalidFileException(std::string error);
+    explicit  InvalidFileException(std::string error);
     const char* what() const noexcept override;
 };
 
