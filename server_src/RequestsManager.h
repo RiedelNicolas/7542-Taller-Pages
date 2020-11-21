@@ -10,10 +10,11 @@
 #include "../common_src/Socket.h"
 #include "ClientHandler.h"
 
-class RequestsManager: public Thread{
+class RequestsManager: public Thread {
  private:
     Socket socket;
     bool running;
+    PrintMonitor printer;
     std::vector<Thread*> clients;
     std::stringstream stream;
     void clean();

@@ -17,7 +17,6 @@ RequestsManager::RequestsManager(std::string port, std::string path) {
 }
 
 void RequestsManager::run() {
-    PrintMonitor printer;
     while( this->running ) {
         int peer = this->socket.acceptOne();
         this->clean();
