@@ -10,11 +10,12 @@
 #include <sstream>
 
 class Server {
+ private:
     std::string port;
     std::string path;
-    waitCharacter(const char waited);
+    void waitCharacter (const char waited);
  public:
-    explicit Server(const std::string& port, const std::string& path);
+    explicit Server(const std::string& port, const std::string& rootPath);
 
     void operator()();
 };
