@@ -4,7 +4,7 @@ project(7542_Taller_Pages)
 set(CMAKE_CXX_STANDARD 14)
 
 set(COMMON common_src/OSexception.cpp common_src/OSexception.h common_src/Socket.cpp common_src/Socket.h common_src/SocketException.cpp
-            common_src/Socket.h common_src/Thread.cpp common_src/Thread.h common_src/Bloquear.cpp common_src/Bloquear.h)
+            common_src/Socket.h common_src/Thread.cpp common_src/Thread.h common_src/Bloquear.cpp common_src/Bloquear.h common_src/InvalidResourceException.cpp common_src/InvalidResourceException.h)
 
 
 add_executable(client ${COMMON} client_src/main.cpp client_src/Client.cpp client_src/Client.h common_src/InvalidFileException.cpp common_src/InvalidFileException.h)

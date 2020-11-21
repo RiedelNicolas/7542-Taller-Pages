@@ -19,7 +19,7 @@ class ResourcesRepository {
     ResourcesRepository(const std::string &rootPath);
     const std::string& getRoot();
     const std::string& get(const std::string& key);
-    void post(const std::string& key, const std::string resource);
+    void post(const std::string& key, const std::string& resource);
 };
 
 

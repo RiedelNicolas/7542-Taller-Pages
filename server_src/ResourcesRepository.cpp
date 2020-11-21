@@ -25,4 +25,8 @@ const std::string &ResourcesRepository::get(const std::string &key) {
     this->map[];
 }
 
+void ResourcesRepository::post(const std::string& key, const std::string& resource) {
+    this->map[key] = resource;
+}
+
 
