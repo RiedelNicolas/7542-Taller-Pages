@@ -6,8 +6,15 @@
 #define INC_7542_TALLER_PAGES_PETITIONPROCESSOR_H
 
 
-class PetitionProcessor {
+#include <string>
 
+class PetitionProcessor {
+ private:
+
+ public:
+    void process();
+    std::string getAnswer();
+    std::string getDisplay();
 };
 
 
