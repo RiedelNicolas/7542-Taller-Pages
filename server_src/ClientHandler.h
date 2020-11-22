@@ -10,6 +10,7 @@
 #include "../common_src/Thread.h"
 #include "../common_src/Socket.h"
 #include "PrintMonitor.h"
+#include "ResourcesRepository.h"
 
 class ClientHandler : public Thread {
  private:
@@ -17,7 +18,7 @@ class ClientHandler : public Thread {
     bool running;
     std::string petition;
     std::string result;
-    std::stringstream root;
+    ResourcesRepository& resources;
     PrintMonitor& printer;
     void receivePetition();
     void process();
@@ -25,7 +26,7 @@ class ClientHandler : public Thread {
  public:
 
     ClientHandler(const int fd, PrintMonitor& printer,
-                  std::string root);
+                  ResourcesRepository& resources);
     void run() override;
     void stop() override;
     bool done() override;
