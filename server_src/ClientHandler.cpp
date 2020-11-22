@@ -21,14 +21,6 @@ void ClientHandler::stop() {
     socket.close();
 }
 
-ClientHandler::ClientHandler(const int fd, PrintMonitor& printer,
-                             std::string root)
-                                        : socket(fd),
-                                        root(root),
-                                        printer(printer){
-    this->running = true;
-}
-
 void ClientHandler::receivePetition() {
     socket.receive(petition);
 }
@@ -43,4 +35,10 @@ void ClientHandler::sendResult() {
 
 bool ClientHandler::done() {
     return !running;
+}
+
+ClientHandler::ClientHandler(const int fd, PrintMonitor &printer,
+                             ResourcesRepository &resources): printer(printer),
+                             resources(resources){
+    this->running = true;
 }

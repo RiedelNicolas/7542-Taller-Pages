@@ -18,8 +18,8 @@ class ClientHandler : public Thread {
     bool running;
     std::string petition;
     std::string result;
-    ResourcesRepository& resources;
     PrintMonitor& printer;
+    ResourcesRepository& resources;
     void receivePetition();
     void process();
     void sendResult();

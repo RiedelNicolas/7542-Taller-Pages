@@ -19,7 +19,7 @@ void RequestsManager::run() {
         int peer = this->socket.acceptOne();
         this->clean();
         if (peer != -1) {
-            this->clients.push_back( new ClientHandler(peer, printer, stream.str() ) );
+            this->clients.push_back( new ClientHandler(peer, printer, resources ) );
             clients.back()->start();
         } else {
         this->running = false;
