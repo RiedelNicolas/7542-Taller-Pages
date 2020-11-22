@@ -16,11 +16,9 @@ class ClientHandler : public Thread {
  private:
     Socket socket;
     bool running;
-    std::string petition;
-    std::string result;
     PrintMonitor& printer;
     ResourcesRepository& resources;
-    void receivePetition();
+    std::string receivePetition();
     void process();
     void sendResult();
  public:

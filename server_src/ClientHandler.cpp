@@ -7,8 +7,8 @@
 #include "PetitionParser.h"
 
 void ClientHandler::run() {
-    this->receivePetition();
-    PetitionParser parser(petition);
+
+    PetitionParser parser(this->receivePetition());
     printer.print( parser.getFirstLine() );
     this->process();
     this->sendResult();
@@ -16,13 +16,16 @@ void ClientHandler::run() {
     this->stop();
 }
 
+
 void ClientHandler::stop() {
     this->running = false;
     socket.close();
 }
 
-void ClientHandler::receivePetition() {
+std::string ClientHandler::receivePetition() {
+    std::string petition;
     socket.receive(petition);
+    return petition;
 }
 
 void ClientHandler::process() {

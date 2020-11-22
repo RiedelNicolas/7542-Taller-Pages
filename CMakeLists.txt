@@ -9,7 +9,7 @@ set(COMMON common_src/OSexception.cpp common_src/OSexception.h common_src/Socket
 
 add_executable(client ${COMMON} client_src/main.cpp client_src/Client.cpp client_src/Client.h common_src/InvalidFileException.cpp common_src/InvalidFileException.h)
 
-add_executable(server ${COMMON}  server_src/main.cpp server_src/Server.cpp server_src/Server.h server_src/ClientHandler.cpp server_src/ClientHandler.h server_src/RequestsManager.cpp server_src/RequestsManager.h server_src/PetitionParser.cpp server_src/PetitionParser.h server_src/PrintMonitor.cpp server_src/PrintMonitor.h server_src/ResourcesRepository.cpp server_src/ResourcesRepository.h)
+add_executable(server ${COMMON}  server_src/main.cpp server_src/Server.cpp server_src/Server.h server_src/ClientHandler.cpp server_src/ClientHandler.h server_src/RequestsManager.cpp server_src/RequestsManager.h server_src/PetitionParser.cpp server_src/PetitionParser.h server_src/PrintMonitor.cpp server_src/PrintMonitor.h server_src/ResourcesRepository.cpp server_src/ResourcesRepository.h server_src/PetitionProcessor.cpp server_src/PetitionProcessor.h)
 
 
 target_compile_options (client PRIVATE -std=c++11 -Wall -Werror -pedantic -pedantic-errors
