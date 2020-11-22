@@ -7,13 +7,11 @@
 #include "RequestsManager.h"
 #include "PrintMonitor.h"
 
-RequestsManager::RequestsManager(std::string port, std::string path) {
+RequestsManager::RequestsManager(const std::string& port, const std::string& path)
+                                                                :resources(path) {
     this->socket.bindToPort(port);
     this->socket.listenIncoming();
     this->running = true;
-    std::ifstream inFile;
-    inFile.open(path);
-    stream << inFile.rdbuf();
 }
 
 void RequestsManager::run() {

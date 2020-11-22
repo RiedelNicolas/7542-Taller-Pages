@@ -21,7 +21,7 @@ class RequestsManager: public Thread {
     void clean();
     void joinAll();
  public:
-    RequestsManager(std::string port, std::string path);
+    RequestsManager(const std::string& port, const std::string& path);
     void run() override;
     bool done() override;
     void stop() override;
