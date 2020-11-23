@@ -23,7 +23,7 @@ class ClientHandler : public Thread {
     void sendResult(const std::string& result);
  public:
 
-    ClientHandler(const int fd, PrintMonitor& printer,
+    ClientHandler(Socket&& peer, PrintMonitor& printer,
                   ResourcesRepository& resources);
     void run() override;
     void stop() override;

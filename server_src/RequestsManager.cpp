@@ -16,12 +16,12 @@ RequestsManager::RequestsManager(const std::string& port, const std::string& pat
 
 void RequestsManager::run() {
     while( this->running ) {
-        int peer = this->socket.acceptOne();
+        Socket peer = this->socket.acceptOne();
         this->clean();
-        if (peer != -1) {
-            this->clients.push_back( new ClientHandler(peer, printer, resources ) );
-            //clients.back()->start();
-            clients.back()->run();
+        if ( peer.valid() ) {
+            this->clients.push_back( new ClientHandler(std::move(peer),
+                                                       printer, resources ) );
+            clients.back()->start();
         } else {
         this->running = false;
         }
