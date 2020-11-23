@@ -29,7 +29,7 @@ std::string PetitionParser::getResource() {
     if (end - start <= 1) {  // no resource.
         return std::string();  // default string is empty
     }
-    return aux.substr(start+1, end-1);
+    return aux.substr(start+1, (end - start)-1);
 }
 
 std::string PetitionParser::getBody() {
@@ -39,9 +39,13 @@ std::string PetitionParser::getBody() {
     std::string aux;
     bool bodyReached = false;
     while ( std::getline(petition,line) ){
-        if(line.empty() ) bodyReached = true;
+        if(line.empty() ){
+            bodyReached = true;
+            continue;
+        }
         if( !bodyReached ) continue;
         aux += line;
+        if( petition.good() ) aux += '\n';
     }
     return aux;
 }
