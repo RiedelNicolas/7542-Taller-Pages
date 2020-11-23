@@ -7,11 +7,16 @@
 
 
 #include <string>
+#include "ResourcesRepository.h"
+#include "PetitionLogic.h"
 
 class PetitionProcessor {
  private:
-
+ ResourcesRepository& resources;
+ PetitionLogic& petition;
  public:
+    PetitionProcessor(ResourcesRepository& resources,
+                      const std::string& petition);
     void process();
     std::string getAnswer();
     std::string getDisplay();
