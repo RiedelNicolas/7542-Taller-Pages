@@ -11,6 +11,7 @@
 #include "../common_src/Socket.h"
 #include "PrintMonitor.h"
 #include "ResourcesRepository.h"
+#include "PetitionProcessor.h"
 
 class ClientHandler : public Thread {
  private:
@@ -19,8 +20,7 @@ class ClientHandler : public Thread {
     PrintMonitor& printer;
     ResourcesRepository& resources;
     std::string receivePetition();
-    void process();
-    void sendResult();
+    void sendResult(const std::string& result);
  public:
 
     ClientHandler(const int fd, PrintMonitor& printer,

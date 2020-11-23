@@ -7,15 +7,13 @@
 #include "PetitionParser.h"
 
 void ClientHandler::run() {
-
-    PetitionParser parser(this->receivePetition());
-    printer.print( parser.getFirstLine() );
-    this->process();
-    this->sendResult();
+    PetitionProcessor petProcessor(resources,this->receivePetition());
+    petProcessor.process();
+    printer.print( petProcessor.getDisplay() );
+    this->sendResult(petProcessor.getAnswer());
     socket.endWriting();
     this->stop();
 }
-
 
 void ClientHandler::stop() {
     this->running = false;
@@ -28,11 +26,8 @@ std::string ClientHandler::receivePetition() {
     return petition;
 }
 
-void ClientHandler::process() {
-    result = "esta deberia ser la respuesta del servidor";
-}
 
-void ClientHandler::sendResult() {
+void ClientHandler::sendResult(const std::string& result) {
     socket.send(result.c_str(), result.length());
 }
 
