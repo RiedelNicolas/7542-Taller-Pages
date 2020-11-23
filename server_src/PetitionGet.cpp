@@ -4,14 +4,11 @@
 
 #include "PetitionGet.h"
 
+
+
 void PetitionGet::execute() {
-
+    this->parser.get
 }
 
-std::string PetitionGet::getAnswer() {
-    return std::__cxx11::string();
-}
 
-std::string PetitionGet::getDisplay() {
-    return std::__cxx11::string();
-}
+

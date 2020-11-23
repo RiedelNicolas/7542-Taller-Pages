@@ -12,3 +12,9 @@ PetitionLogic::PetitionLogic(const std::string &petition, ResourcesRepository& r
 std::string PetitionLogic::getFirstLine() {
     return parser.getFirstLine();
 }
+
+std::string PetitionLogic::getAnswer() {
+    return this->answer;
+}
+
+

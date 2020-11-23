@@ -14,8 +14,10 @@ class PetitionParser {
 
  public:
     explicit PetitionParser(std::string in);
+    std::string getMethod();
     std::string getFirstLine();
+    std::string getResource();
+    std::string getBody();
 };
-
 
 #endif //INC_7542_TALLER_PAGES_PETITIONPARSER_H

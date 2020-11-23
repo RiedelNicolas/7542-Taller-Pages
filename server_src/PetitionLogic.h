@@ -11,7 +11,7 @@
 #include "ResourcesRepository.h"
 
 class PetitionLogic {
- private:
+ protected:
     PetitionParser parser;
     ResourcesRepository& resources;
     std::string answer;
@@ -19,7 +19,7 @@ class PetitionLogic {
     PetitionLogic(const std::string &petition, ResourcesRepository &resources);
     std::string getFirstLine();
     virtual void execute() = 0;
-    virtual std::string getAnswer() = 0;
+    std::string getAnswer();
     virtual ~PetitionLogic() = 0;
 };
 
