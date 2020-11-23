@@ -12,11 +12,11 @@
 
 class PetitionLogic {
  protected:
-    PetitionParser parser;
     ResourcesRepository& resources;
+    PetitionParser& parser;
     std::string answer;
  public:
-    PetitionLogic(const std::string &petition, ResourcesRepository &resources);
+    PetitionLogic(ResourcesRepository &resources, PetitionParser &parser );
     std::string getFirstLine();
     virtual void execute() = 0;
     std::string getAnswer();

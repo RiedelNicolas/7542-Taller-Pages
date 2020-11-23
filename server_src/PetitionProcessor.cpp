@@ -11,7 +11,7 @@ PetitionProcessor::PetitionProcessor(ResourcesRepository &resources, const std::
     std::string methodId = parser.getMethod();
 
     if (methodId == GET_ID) {
-        petitionLogic = new;
+        petitionLogic = new ;
     }
     else if (methodId == POST_ID ){
         petitionLogic = new;
@@ -23,6 +23,14 @@ PetitionProcessor::PetitionProcessor(ResourcesRepository &resources, const std::
 
 PetitionProcessor::~PetitionProcessor() {
     delete petitionLogic;
+}
+
+std::string PetitionProcessor::getAnswer() {
+    return petitionLogic->getAnswer();
+}
+
+std::string PetitionProcessor::getDisplay() {
+    return petitionLogic->getFirstLine();
 }
 
 
