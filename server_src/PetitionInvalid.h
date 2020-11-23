@@ -6,7 +6,9 @@
 #define INC_7542_TALLER_PAGES_PETITIONINVALID_H
 
 
-class PetitionInvalid {
+#include "PetitionLogic.h"
+
+class PetitionInvalid  : public PetitionLogic  {
 
 };
 

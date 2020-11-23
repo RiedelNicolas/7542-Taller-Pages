@@ -6,7 +6,9 @@
 #define INC_7542_TALLER_PAGES_PETITIONPOSTROOT_H
 
 
-class petitionPostRoot {
+#include "PetitionLogic.h"
+
+class petitionPostRoot : public PetitionLogic  {
 
 };
 

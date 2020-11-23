@@ -6,7 +6,9 @@
 #define INC_7542_TALLER_PAGES_PETITIONGETROOT_H
 
 
-class PetitionGetRoot {
+#include "PetitionLogic.h"
+
+class PetitionGetRoot : public PetitionLogic {
 
 };
 
