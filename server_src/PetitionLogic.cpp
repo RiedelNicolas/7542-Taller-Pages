@@ -3,3 +3,10 @@
 //
 
 #include "PetitionLogic.h"
+
+PetitionLogic::PetitionLogic(const std::string &petition):parser(petition) {
+}
+
+std::string PetitionLogic::getFirstLine() {
+    return parser.getFirstLine();
+}
