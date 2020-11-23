@@ -8,7 +8,7 @@
 
 #include "PetitionLogic.h"
 
-class petitionPost  : public PetitionLogic  {
+class PetitionPost  : public PetitionLogic  {
 
 };
 
