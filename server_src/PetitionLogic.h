@@ -8,16 +8,18 @@
 
 #include <sstream>
 #include "PetitionParser.h"
+#include "ResourcesRepository.h"
 
 class PetitionLogic {
  private:
     PetitionParser parser;
+    ResourcesRepository& resources;
+    std::string answer;
  public:
-    explicit PetitionLogic(const std::string& petition);
+    PetitionLogic(const std::string &petition, ResourcesRepository &resources);
     std::string getFirstLine();
     virtual void execute() = 0;
     virtual std::string getAnswer() = 0;
-    virtual std::string getDisplay() = 0;
     virtual ~PetitionLogic() = 0;
 };
 
