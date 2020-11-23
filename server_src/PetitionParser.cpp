@@ -18,16 +18,16 @@ std::string PetitionParser::getFirstLine() {
 
 std::string PetitionParser::getMethod() {
     std::string line = this->getFirstLine();
-     return line.substr(0,line.find_first_of('/') );
+     return line.substr(0,line.find_first_of('/') -1 );
 }
 
 std::string PetitionParser::getResource() {
     std::string aux;
-    std::getline(petition,aux);
+    aux = getFirstLine();
     size_t start = aux.find_first_of('/');
     size_t end = aux.find_first_of(' ', start);
-    if (start - end <= 1) { // no resource.
-        return std::string(); //default is empty
+    if (end - start <= 1) {  // no resource.
+        return std::string();  // default string is empty
     }
     return aux.substr(start+1, end-1);
 }

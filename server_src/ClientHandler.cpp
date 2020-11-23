@@ -34,7 +34,7 @@ bool ClientHandler::done() {
 }
 
 ClientHandler::ClientHandler(const int fd, PrintMonitor &printer,
-                             ResourcesRepository &resources): printer(printer),
+                             ResourcesRepository &resources): socket(fd), printer(printer),
                              resources(resources){
     this->running = true;
 }

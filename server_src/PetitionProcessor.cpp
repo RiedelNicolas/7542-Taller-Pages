@@ -15,7 +15,7 @@ PetitionProcessor::PetitionProcessor(ResourcesRepository &resources, const std::
                                             parser(petition){
     std::string methodId = parser.getMethod();
 
-    if (methodId == GET_ID) {
+    if (methodId == GET_ID ) {
         petitionLogic = new PetitionGet(resources, parser);
     }
     else if (methodId == POST_ID ){
@@ -28,6 +28,7 @@ PetitionProcessor::PetitionProcessor(ResourcesRepository &resources, const std::
 
 PetitionProcessor::~PetitionProcessor() {
     delete petitionLogic;
+    petitionLogic = nullptr;
 }
 
 std::string PetitionProcessor::getAnswer() {

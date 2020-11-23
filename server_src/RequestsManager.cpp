@@ -20,7 +20,8 @@ void RequestsManager::run() {
         this->clean();
         if (peer != -1) {
             this->clients.push_back( new ClientHandler(peer, printer, resources ) );
-            clients.back()->start();
+            //clients.back()->start();
+            clients.back()->run();
         } else {
         this->running = false;
         }

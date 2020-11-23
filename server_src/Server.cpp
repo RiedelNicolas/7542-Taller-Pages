@@ -12,6 +12,8 @@ void Server::operator()() {
     waitCharacter('q'); // blocking
     manager.stop();
     manager.join();*/
+    RequestsManager manager(port, path);
+    manager.run();
 }
 
 Server::Server(const std::string& port, const std::string& rootPath): port(port),
