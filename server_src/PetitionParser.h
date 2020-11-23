@@ -10,7 +10,7 @@
 
 class PetitionParser {
  private:
-    std::stringstream petition;
+    std::istringstream petition;
 
  public:
     explicit PetitionParser(std::string in);

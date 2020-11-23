@@ -9,6 +9,8 @@ PetitionParser::PetitionParser(std::string in): petition(in) {
 }
 
 std::string PetitionParser::getFirstLine() {
+    petition.clear();
+    petition.seekg(0);
     std::string aux;
     std::getline(petition,aux);
     return aux;
@@ -20,9 +22,26 @@ std::string PetitionParser::getMethod() {
 }
 
 std::string PetitionParser::getResource() {
-    return std::__cxx11::string();
+    std::string aux;
+    std::getline(petition,aux);
+    size_t start = aux.find_first_of('/');
+    size_t end = aux.find_first_of(' ', start);
+    if (start - end <= 1) { // no resource.
+        return std::string(); //default is empty
+    }
+    return aux.substr(start+1, end-1);
 }
 
 std::string PetitionParser::getBody() {
-    return std::__cxx11::string();
+    petition.clear();
+    petition.seekg(0);
+    std::string line;
+    std::string aux;
+    bool bodyReached = false;
+    while ( std::getline(petition,line) ){
+        if(line.empty() ) bodyReached = true;
+        if( !bodyReached ) continue;
+        aux += line;
+    }
+    return aux;
 }
