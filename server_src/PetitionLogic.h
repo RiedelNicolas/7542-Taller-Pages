@@ -20,7 +20,7 @@ class PetitionLogic {
     std::string getFirstLine();
     virtual void execute() = 0;
     std::string getAnswer();
-    virtual ~PetitionLogic() = 0;
+    virtual ~PetitionLogic(){};
 };
 
 #endif //INC_7542_TALLER_PAGES_PETITIONLOGIC_H

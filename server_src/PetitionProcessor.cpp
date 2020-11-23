@@ -4,6 +4,8 @@
 
 #include "PetitionProcessor.h"
 #include "PetitionGet.h"
+#include "PetitionPost.h"
+#include "PetitionInvalid.h"
 
 #define GET_ID "GET"
 #define POST_ID "POST"
@@ -17,10 +19,10 @@ PetitionProcessor::PetitionProcessor(ResourcesRepository &resources, const std::
         petitionLogic = new PetitionGet(resources, parser);
     }
     else if (methodId == POST_ID ){
-        petitionLogic = new;
+        petitionLogic = new PetitionPost(resources, parser);
     }
     else{
-        petitionLogic = new;
+        petitionLogic = new PetitionInvalid(resources, parser);
     }
 }
 
@@ -34,6 +36,10 @@ std::string PetitionProcessor::getAnswer() {
 
 std::string PetitionProcessor::getDisplay() {
     return petitionLogic->getFirstLine();
+}
+
+void PetitionProcessor::process() {
+    petitionLogic->execute();
 }
 
 

@@ -4,8 +4,6 @@
 
 #include "PetitionGet.h"
 
-#define
-
 
 void PetitionGet::execute() {
     std::string resource = parser.getResource();
