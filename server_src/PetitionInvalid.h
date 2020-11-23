@@ -9,9 +9,9 @@
 #include "PetitionLogic.h"
 
 class PetitionInvalid  : public PetitionLogic  {
-private:
-    std::stringstream petition;
-public:
+ public:
+    PetitionInvalid(ResourcesRepository &resources, PetitionParser &parser) :
+    PetitionLogic(resources, parser ){}
     void execute() override;
 };
 

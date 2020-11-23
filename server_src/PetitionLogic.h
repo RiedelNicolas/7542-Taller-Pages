@@ -15,8 +15,8 @@ class PetitionLogic {
     ResourcesRepository& resources;
     PetitionParser& parser;
     std::string answer;
- public:
     PetitionLogic(ResourcesRepository &resources, PetitionParser &parser );
+ public:
     std::string getFirstLine();
     virtual void execute() = 0;
     std::string getAnswer();

@@ -10,6 +10,8 @@
 
 class PetitionGet : public PetitionLogic {
  public:
+    PetitionGet(ResourcesRepository &resources, PetitionParser &parser) :
+        PetitionLogic(resources, parser ){}
     void execute() override;
 };
 

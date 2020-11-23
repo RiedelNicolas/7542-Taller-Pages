@@ -3,15 +3,18 @@
 //
 
 #include "PetitionProcessor.h"
+#include "PetitionGet.h"
+
 #define GET_ID "GET"
 #define POST_ID "POST"
+
 PetitionProcessor::PetitionProcessor(ResourcesRepository &resources, const std::string &petition)
                                             :resources(resources),
                                             parser(petition){
     std::string methodId = parser.getMethod();
 
     if (methodId == GET_ID) {
-        petitionLogic = new ;
+        petitionLogic = new PetitionGet(resources, parser);
     }
     else if (methodId == POST_ID ){
         petitionLogic = new;
