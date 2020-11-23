@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "ClientHandler.h"
-#include "PetitionParser.h"
 
 void ClientHandler::run() {
     PetitionProcessor petProcessor(resources,this->receivePetition());
@@ -25,7 +24,6 @@ std::string ClientHandler::receivePetition() {
     socket.receive(petition);
     return petition;
 }
-
 
 void ClientHandler::sendResult(const std::string& result) {
     socket.send(result.c_str(), result.length());

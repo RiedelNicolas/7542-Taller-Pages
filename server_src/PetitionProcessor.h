@@ -13,13 +13,14 @@
 class PetitionProcessor {
  private:
  ResourcesRepository& resources;
- PetitionLogic& petition;
+ PetitionLogic* petitionLogic;
  public:
     PetitionProcessor(ResourcesRepository& resources,
                       const std::string& petition);
     void process();
     std::string getAnswer();
     std::string getDisplay();
+    ~PetitionProcessor();
 };
 
 

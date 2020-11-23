@@ -18,6 +18,7 @@ class PetitionLogic {
     virtual void execute() = 0;
     virtual std::string getAnswer() = 0;
     virtual std::string getDisplay() = 0;
+    virtual ~PetitionLogic() = 0;
 };
 
 #endif //INC_7542_TALLER_PAGES_PETITIONLOGIC_H
