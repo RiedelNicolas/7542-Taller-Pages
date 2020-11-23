@@ -67,9 +67,9 @@ void Socket::listenIncoming() {
     }
 }
 
-int Socket::acceptOne() {
+Socket Socket::acceptOne() {
     int peer =  accept( this->fd, NULL, NULL);
-    return peer;
+    return Socket(peer);  // RVO
 }
 
 void Socket::send(const char *buffer, const size_t len) {
