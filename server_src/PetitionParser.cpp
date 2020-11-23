@@ -13,3 +13,16 @@ std::string PetitionParser::getFirstLine() {
     std::getline(petition,aux);
     return aux;
 }
+
+std::string PetitionParser::getMethod() {
+    std::string line = this->getFirstLine();
+     return line.substr(0,line.find_first_of('/') );
+}
+
+std::string PetitionParser::getResource() {
+    return std::__cxx11::string();
+}
+
+std::string PetitionParser::getBody() {
+    return std::__cxx11::string();
+}

@@ -13,6 +13,7 @@
 class PetitionProcessor {
  private:
  ResourcesRepository& resources;
+ PetitionParser parser;
  PetitionLogic* petitionLogic;
  public:
     PetitionProcessor(ResourcesRepository& resources,

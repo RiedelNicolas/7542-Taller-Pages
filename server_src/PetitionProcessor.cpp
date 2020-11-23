@@ -6,9 +6,9 @@
 #define GET_ID "GET"
 #define POST_ID "POST"
 PetitionProcessor::PetitionProcessor(ResourcesRepository &resources, const std::string &petition)
-                                            :resources(resources){
-    std::string methodId = petition.substr
-        (0,petition.find_first_of('/') );
+                                            :resources(resources),
+                                            parser(petition){
+    std::string methodId = parser.getMethod();
 
     if (methodId == GET_ID) {
         petitionLogic = new;
