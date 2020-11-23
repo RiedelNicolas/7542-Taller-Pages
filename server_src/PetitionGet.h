@@ -9,9 +9,9 @@
 #include "PetitionLogic.h"
 
 class PetitionGet : public PetitionLogic {
-private:
+ private:
     std::stringstream petition;
-public:
+ public:
     void execute() override;
     std::string getAnswer() override;
     std::string getDisplay() override;
