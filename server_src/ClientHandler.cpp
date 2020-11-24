@@ -4,14 +4,22 @@
 
 #include <string>
 #include <utility>
+#include <iostream>
 #include "ClientHandler.h"
 
 void ClientHandler::run() {
-    PetitionProcessor petProcessor(resources, this->receivePetition());
-    petProcessor.process();
-    printer.print(petProcessor.getDisplay());
-    this->sendResult(petProcessor.getAnswer());
-    socket.endWriting();
+
+    try {
+        PetitionProcessor petProcessor(resources, this->receivePetition());
+        petProcessor.process();
+        printer.print(petProcessor.getDisplay());
+        this->sendResult(petProcessor.getAnswer());
+        socket.endWriting();
+    } catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    } catch(...) {
+        std::cerr << "Unknown error"<< std::endl;
+    }
     this->stop();
 }
 
