@@ -5,7 +5,7 @@
 #ifndef INC_7542_TALLER_PAGES_PRINTMONITOR_H
 #define INC_7542_TALLER_PAGES_PRINTMONITOR_H
 
-
+#include <string>
 #include <mutex>
 
 class PrintMonitor {

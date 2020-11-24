@@ -11,3 +11,4 @@ Lock::Lock(std::mutex &mut): mut(mut) {
 Lock::~Lock() {
     mut.unlock();
 }
+
