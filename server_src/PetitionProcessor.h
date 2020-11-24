@@ -22,8 +22,8 @@ class PetitionProcessor {
     std::string getAnswer();
     std::string getDisplay();
     ~PetitionProcessor();
-    PetitionProcessor operator=(const PetitionProcessor&) = delete;
-    PetitionProcessor( const PetitionProcessor & ) = delete;
+    PetitionProcessor operator=(const PetitionProcessor& in) = delete;
+    PetitionProcessor(const PetitionProcessor& in) = delete;
 };
 
 
