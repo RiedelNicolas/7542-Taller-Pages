@@ -22,6 +22,7 @@ class PetitionProcessor {
     std::string getAnswer();
     std::string getDisplay();
     ~PetitionProcessor();
+    PetitionProcessor operator=(const PetitionProcessor&) = delete;
 };
 
 

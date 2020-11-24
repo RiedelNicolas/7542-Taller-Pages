@@ -5,7 +5,7 @@
 #include <string>
 #include "PetitionParser.h"
 
-PetitionParser::PetitionParser(std::string in): petition(in) {
+PetitionParser::PetitionParser(const std::string& in): petition(in) {
 }
 
 std::string PetitionParser::getFirstLine() {

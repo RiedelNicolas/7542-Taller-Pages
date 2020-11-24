@@ -13,7 +13,7 @@ class PetitionParser {
     std::istringstream petition;
 
  public:
-    explicit PetitionParser(std::string in);
+    explicit PetitionParser(const std::string& in);
     std::string getMethod();
     std::string getFirstLine();
     std::string getResource();
