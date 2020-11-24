@@ -6,7 +6,7 @@
 #define COMMON_SRC_OSEXCEPTION_H_
 
 #include <string>
-
+  // Error on a syscall. Shows the errno strerror.
 class OSexception: public std::exception {
  private:
     const int errnoCode;
