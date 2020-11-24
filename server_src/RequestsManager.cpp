@@ -5,7 +5,6 @@
 #include <utility>
 #include <algorithm>
 #include "RequestsManager.h"
-#include "PrintMonitor.h"
 
 RequestsManager::RequestsManager(const std::string& port,
                                  const std::string& path)
@@ -30,6 +29,7 @@ void RequestsManager::run() {
     this->joinAll();
 }
 
+  //aux static function, required for  "REMOVE IF" to work.
 bool clientReaper(ClientHandler* clientHandler) {
     if (clientHandler->done()) {
         clientHandler->join();
@@ -48,6 +48,9 @@ void RequestsManager::cleanFinished() {
 
 void RequestsManager::joinAll() {
     for (auto i :  clients) {
+        if( !i->done() ){
+            i->stop();
+        }
         i->join();
         delete i;
     }

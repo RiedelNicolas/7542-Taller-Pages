@@ -7,16 +7,17 @@
 
 #include <string>
 #include <sstream>
-
+  // Able to parse an htpp petition.
 class PetitionParser {
  private:
     std::istringstream petition;
-
  public:
     explicit PetitionParser(const std::string& in);
     std::string getMethod();
     std::string getFirstLine();
+    // Returns the resource name.
     std::string getResource();
+    // Returns the body of the petition.
     std::string getBody();
 };
 

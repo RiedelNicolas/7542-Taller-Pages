@@ -9,7 +9,7 @@
 #include <string>
 #include "ResourcesRepository.h"
 #include "PetitionLogic.h"
-
+ // Process a petition. Contains an instance of PetitionLogic.
 class PetitionProcessor {
  private:
     ResourcesRepository& resources;
@@ -18,8 +18,11 @@ class PetitionProcessor {
  public:
     PetitionProcessor(ResourcesRepository& resources,
                       const std::string& petition);
+    // gets the answer and display ready.
     void process();
+    // gets the answer to the petitory (execute must have been run before).
     std::string getAnswer();
+    // gets the message to shown on stdin.
     std::string getDisplay();
     ~PetitionProcessor();
     PetitionProcessor operator=(const PetitionProcessor& in) = delete;
