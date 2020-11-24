@@ -1,4 +1,4 @@
-# 7542 - Taller-Pages
+ 7542 - Taller-Pages
 
 ## Nicolás Riedel
 
@@ -44,14 +44,90 @@ Encargada de esconder la lógica de los petitorios. Contiene una  **PetitionLogi
 
 Clase abstracta, sus derivados implementan la logica de los distintos tipos de petitorios que tiene el trabajo. Estos son : 
 
-- PetitionGet :  Busca el recurso deseado.
-- PetitionPost : Da de alta el recurso especificado.
-- PetitionInvalid : Es el caso donde se recibe un petitorio invalido, no aplica cambios pero notifica al cliente.
+- **PetitionGet** :  Busca el recurso deseado.
 
-## 
+- **PetitionPost** : Da de alta el recurso especificado.
+
+- **PetitionInvalid** : Es el caso donde se recibe un petitorio invalido, no aplica cambios pero notifica al cliente.
+
+  
+
+## PetitionParser
+
+Encargado de parsear los petitorios recibidos.
+
+## PrintMonitor
+
+Objeto compartido entre distintos threads, usado para imprimir por pantalla. ( **Thread**-**safe**)
+
+## RequestManager
+
+Clase encargada de establecer las conexiones entrantes. Es la que genera instancias de **ClientHandler** cada vez que se conecta un cliente nuevo. Es una clase derivada de  **Thread**.
+
+## **ResourcesRepository**
+
+Objeto compartido, utilizado para almacenar los distintos recursos que se reciben.  ( **Thread**-**safe**)
+
+## **Server**
+
+Engloba la lógica del servidor, resuelve petitorios hasta que recibe una 'Q' por STDIN.
+
+## Exceptions
+
+### InvalidFileException
+
+Utilizada cuando no se encuentra el archivo pedido. (En el caso de este TP el Root).
+
+### Osexception
+
+Utilizada cuando hay un error en un syscall.  Su **.what()** muestra el strerror correspondiente al errno asociado al error. 
+
+### SocketException
+
+Ocurrió un error en la utilización de los sockets.
+
+## Diagramas :
 
 
 
+## Solución a los issues:
 
+1. ![](img/Issue1.png)
 
-## 
+   ​		Ahora dicho constructor es privado.
+
+2.   ![](img/Issue2.png)
+
+   ​	                             Luego de ver el ejemplo de la clase, entendí el error y lo cambie por :  
+
+   ​                             	![](img/solucion2.png)
+   
+   
+   
+3. ![](img/issue3.png)
+
+   ​				Según se nos especifico en la clase teníamos permitido usar cualquier chunk size (siempre  y cuando este sea mayor a uno), 1024 bytes me pareció un tamaño  apropiado.
+
+4.
+
+![](img/issue4.png)
+
+​								Se cambio la implementación del Thread-Reaper, ademas se fuerza el stop de los threads cuando se cierra el socket aceptador. 
+
+5. ![](img/issue5.png)
+
+   ​					Comprendo lo que esta mal en este tipo de casos, se corrigen.
+
+   
+
+6.
+
+​							 ![](img/issue6.png)
+
+​							Se pasa funcionalidad al hilo principal.
+
+7.
+
+![](img/issueFinal.png)
+
+​					Se completa la implementación pedida por el enunciado, se documenta el código y se realiza un informe.
