@@ -2,12 +2,13 @@
 // Created by riedel on 12/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_CLIENT_H
-#define INC_7542_TALLER_PAGES_CLIENT_H
+#ifndef CLIENT_SRC_CLIENT_H_
+#define CLIENT_SRC_CLIENT_H_
 
-
-#include "../common_src/Socket.h"
 #include <sstream>
+#include <string>
+#include "../common_src/Socket.h"
+
 
 class Client {
  private:
@@ -25,4 +26,4 @@ class Client {
 };
 
 
-#endif //INC_7542_TALLER_PAGES_CLIENT_H
+#endif  // CLIENT_SRC_CLIENT_H_

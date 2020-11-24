@@ -48,7 +48,6 @@ void RequestsManager::cleanFinished() {
 
 
 void RequestsManager::joinAll() {
-
     for (auto i :  clients) {
         i->join();
         delete i;

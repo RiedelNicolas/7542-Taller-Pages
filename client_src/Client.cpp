@@ -27,7 +27,7 @@ void Client::showResult() {
 }
 
 void Client::sendPetition() {
-    socket.send( petition.str() );
+    socket.send(petition.str());
 }
 
 void Client::receiveResult() {

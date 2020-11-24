@@ -5,16 +5,16 @@
 #define POSHOST 1
 #define POSPORT 2
 
-int main(int argc, char *argv[]){
-    if (argc != VALID_ARGS ) {
+int main(int argc, char *argv[]) {
+    if ( argc != VALID_ARGS ) {
         return  0;
     }
     try {
         Client client;
-        client.run(argv[POSHOST], argv[POSPORT] );
+        client.run(argv[POSHOST], argv[POSPORT]);
     } catch (std::exception& e) {
         std::cerr << e.what() << std::endl;
-    } catch(...){
+    } catch(...) {
         std::cerr << "Unknown error"<< std::endl;
     }
     return 0;

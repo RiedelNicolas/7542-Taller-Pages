@@ -8,7 +8,6 @@
 
 #include <unistd.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
 #include <netdb.h>
 #include <errno.h>
 #include <cstring>
@@ -129,10 +128,7 @@ void Socket::send(std::string string) {
     this->send(string.c_str(), string.length());
 }
 
-Socket::Socket(Socket&& in) noexcept{
-    if(this == &in){
-        return;
-    }
+Socket::Socket(Socket&& in) noexcept {
     this->fd = in.fd;
     in.fd = INVALID_FD;
 }

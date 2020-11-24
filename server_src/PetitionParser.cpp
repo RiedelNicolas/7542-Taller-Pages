@@ -38,7 +38,7 @@ std::string PetitionParser::getBody() {
     std::string line;
     std::string aux;
     bool bodyReached = false;
-    while ( std::getline(petition,line) ){
+    while ( std::getline(petition,line) ) {
         if(line.empty() ){
             bodyReached = true;
             continue;
