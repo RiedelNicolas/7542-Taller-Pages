@@ -4,6 +4,7 @@
 #include <string>
 #include <utility>
 #include <algorithm>
+#include <iostream>
 #include "RequestsManager.h"
 
 RequestsManager::RequestsManager(const std::string& port,
@@ -15,16 +16,23 @@ RequestsManager::RequestsManager(const std::string& port,
 }
 
 void RequestsManager::run() {
-    while ( this->running ) {
-        Socket peer = this->socket.acceptOne();
-        this->cleanFinished();
-        if ( peer.valid() ) {
-            this->clients.push_back(new ClientHandler
-                (std::move(peer), printer, resources));
-            clients.back()->start();
-        } else {
-        this->running = false;
+
+    try {
+        while ( this->running ) {
+            Socket peer = this->socket.acceptOne();
+            this->cleanFinished();
+            if ( peer.valid() ) {
+                this->clients.push_back(new ClientHandler
+                                (std::move(peer), printer, resources));
+                clients.back()->start();
+            } else {
+                this->running = false;
+            }
         }
+    } catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    } catch(...) {
+        std::cerr << "Unknown error"<< std::endl;
     }
     this->joinAll();
 }
