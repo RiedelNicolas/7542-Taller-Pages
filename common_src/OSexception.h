@@ -2,8 +2,8 @@
 // Created by riedel on 7/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_OSEXCEPTION_H
-#define INC_7542_TALLER_PAGES_OSEXCEPTION_H
+#ifndef COMMON_SRC_OSEXCEPTION_H_
+#define COMMON_SRC_OSEXCEPTION_H_
 
 #include <string>
 
@@ -17,4 +17,4 @@ class OSexception: public std::exception {
 };
 
 
-#endif //INC_7542_TALLER_PAGES_OSEXCEPTION_H
+#endif  // COMMON_SRC_OSEXCEPTION_H_

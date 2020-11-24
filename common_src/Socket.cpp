@@ -4,8 +4,6 @@
 
 #include "Socket.h"
 
- //  #define _POSIX_C_SOURCE 201112L  // lo vi en ejemplo de catedra.
-
 #include <unistd.h>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -33,11 +31,12 @@ void Socket::connectTo(std::string host, std::string port) {
         this->fd = socket(current->ai_family,
                           current->ai_socktype, current->ai_protocol);
         if (this->fd == INVALID_FD) continue;
-        if(connect(this->fd, current->ai_addr, current->ai_addrlen) != -1) break;
-        if(this->fd != INVALID_FD) ::close(this->fd);
+        if (connect(this->fd, current->ai_addr, current->ai_addrlen) != -1)
+            break;
+        if (this->fd != INVALID_FD) ::close(this->fd);
     }
     freeaddrinfo(result);
-    if(current == NULL){
+    if (current == NULL) {
         throw SocketException("Unable to connect\n");
     }
 }
@@ -55,7 +54,7 @@ void Socket::bindToPort(std::string port) {
         ::close(this->fd);
     }
     freeaddrinfo(result);
-    if(current == NULL){
+    if (current == NULL) {
         throw SocketException("couldnt bind \n");
     }
 }
@@ -67,14 +66,15 @@ void Socket::listenIncoming() {
 }
 
 Socket Socket::acceptOne() {
-    int peer =  accept( this->fd, NULL, NULL);
+    int peer =  accept(this->fd, NULL, NULL);
     return Socket(peer);  // RVO
 }
 
 void Socket::send(const char *buffer, const size_t len) {
     ssize_t sent = 0;
     while (sent < (ssize_t) len) {
-        ssize_t current = ::send(this->fd, buffer + sent, len-sent, MSG_NOSIGNAL);
+        ssize_t current = ::send(this->fd, buffer + sent,
+                                 len-sent, MSG_NOSIGNAL);
         if (current == -1) throw OSexception(errno);
         sent+=current;
     }
@@ -83,7 +83,8 @@ void Socket::send(const char *buffer, const size_t len) {
 ssize_t Socket::receive(const char *buffer, const size_t len) {
     ssize_t received = 0;
     while (received < (ssize_t) len) {
-        ssize_t current = recv(this->fd, (void *) &buffer[received], len - received, 0);
+        ssize_t current = recv(this->fd, (void *) &buffer[received],
+                               len - received, 0);
         if (current == -1) throw OSexception(errno);
         if (current == 0) break;  // se cerro el socket.
         received+=current;
@@ -91,15 +92,16 @@ ssize_t Socket::receive(const char *buffer, const size_t len) {
     return received;
 }
 
-//wrapper
-void Socket::_getaddrinfo(struct addrinfo **result, const char* port, const char* host) {
+  // wrapper
+void Socket::_getaddrinfo(struct addrinfo **result, const char* port,
+                                                    const char* host) {
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
     hints.ai_flags = AI_PASSIVE;
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     int error = getaddrinfo(host, port, &hints, result);
-    if(error != 0) throw SocketException(  gai_strerror(error) );
+    if (error != 0) throw SocketException(  gai_strerror(error) );
 }
 
 bool Socket::valid() {
@@ -116,7 +118,7 @@ void Socket::endWriting() {
 }
 
 void Socket::receive(std::string &string) {
-    char buffer [BUFFER_LEN];
+    char buffer[BUFFER_LEN];
     ssize_t read;
     do {
         read = this->receive(buffer, BUFFER_LEN);
@@ -134,7 +136,7 @@ Socket::Socket(Socket&& in) noexcept {
 }
 
 Socket &Socket::operator=(Socket&& in) noexcept {
-    if(this == &in){
+    if ( this == &in ) {
         return *this;
     }
     this->fd = in.fd;
@@ -142,8 +144,8 @@ Socket &Socket::operator=(Socket&& in) noexcept {
     return *this;
 }
 
-void Socket::close(){
-    if( this->valid() ){
+void Socket::close() {
+    if ( this->valid() ) {
         this->shutDown(SHUT_RDWR);
         ::close(this->fd);
         this->fd = INVALID_FD;
