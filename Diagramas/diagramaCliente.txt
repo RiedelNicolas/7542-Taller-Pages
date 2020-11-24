@@ -1,0 +1,34 @@
+@startuml
+
+
+hide footbox
+
+actor User
+User->Client : constructor()
+activate Client
+User-> Client : run(host, port)
+Client -> Client : connect(host, port)
+activate Client #DarkSalmon
+Client->Socket : connectTo(host, port)
+activate Socket
+
+Client-> Client : readPetition
+activate Client #lightBlue
+      loop Not EOF
+            Client -> User : ReadStdin
+	    User   --> Client : input
+        end
+deactivate Client #lightBlue
+
+Client->Socket : sendPetition
+
+Client -> Socket : receiveResult();
+Socket --> Client : Result
+deactivate Socket
+Client -> Client : showResult 
+activate Client #lightBlue
+Client --> User : result
+deactivate Client #lightBlue
+deactivate Client #DarkSalmon
+deactivate Client
+@enduml

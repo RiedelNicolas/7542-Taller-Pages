@@ -1,0 +1,65 @@
+@startuml
+hide footbox
+
+actor User
+
+User->Server: server(port, rootpath)
+activate Server
+User->Server: ()
+activate Server #LightBlue
+Server->RequestsManager: builder(port, path)
+activate RequestsManager
+
+RequestsManager -> Socket : bindToPort(port)
+activate Socket
+RequestsManager -> Socket : listenIncoming()
+RequestsManager -> ResourcesRepository : builder(path)
+
+RequestsManager -> PrintMonitor : build()
+activate PrintMonitor
+activate ResourcesRepository
+Server->RequestsManager: start()
+activate RequestsManager #DarkSalmon
+loop 'q' not received
+Server->Server: waitCharacter('q')
+activate Server #DarkSalmon
+	loop PorCadaPeerConectado
+	RequestsManager -> Socket : acceptOne()
+	Socket -> Peer : builder(FD)
+	activate Peer
+	Socket -->RequestsManager : Peer
+	RequestsManager -> ClientHandler : builder(Peer,PrintMonitor, Resources)
+	activate ClientHandler
+	RequestsManager -> ClientHandler : start()
+	activate ClientHandler #DarkSalmon
+	RequestsManager --> RequestsManager : agregoClientALaLista
+	ClientHandler -> Peer : receive()
+	Peer --> ClientHandler : petition
+	ClientHandler -> PetitionProcessor : builder(resources, petition)
+	activate PetitionProcessor
+
+	
+	ClientHandler -> PetitionProcessor : process()
+	activate PetitionProcessor #DarkSalmon
+	PetitionProcessor -> ResourcesRepository : Consulta correspondiente
+	ResourcesRepository --> PetitionProcessor : resultado
+	ClientHandler -> PetitionProcessor : GetAnswer()
+	PetitionProcessor --> ClientHandler : Answer
+	ClientHandler -> PetitionProcessor : GetDisplay()
+	PetitionProcessor --> ClientHandler : Display
+	deactivate PetitionProcessor #DarkSalmon
+	Deactivate PetitionProcessor
+	ClientHandler -> Peer : send(answer)
+	Deactivate Peer
+	ClientHandler -> PrintMonitor : print(display)
+	deactivate ClientHandler #DarkSalmon
+	deactivate ClientHandler 
+	PrintMonitor --> User : Muestra en pantalla	
+	end
+end
+RequestsManager -> RequestsManager : JoinAll
+deactivate Server #DarkSalmon
+Server-> RequestsManager : stop()
+Server-> RequestsManager : join()
+Deactivate RequestsManager
+@endumla

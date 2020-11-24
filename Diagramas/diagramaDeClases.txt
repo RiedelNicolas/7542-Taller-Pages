@@ -1,0 +1,138 @@
+@startuml
+
+
+class Client {
+   +connect(host, port)
+   +readPetition()
+   +sendPetition()
+   +receiveResult()  
+   +showResult() 	
+}
+
+class Lock {
+  -mutex& mut
+  +Lock()
+}
+
+class Socket {
+   -int fd
+   - shutdown(int mode)
+   + connectTo(host, port)
+   + bind(port)
+   + Socket acceptOne()
+   + send(std::string)
+   + receive(std::string)
+}
+
+abstract class Thread {
+	-std::thread
+	+join
+	+start
+	+ {abstract} run()
+	+ {abstract} stop()
+	+ {abstract} bool done()
+}
+
+class ClientHandler {
+	-bool running
+	-std::string receivePetition()
+	sendResult(std::string)
+	+ run()
+	+ stop()
+	+ bool done()
+}
+
+class PetitionGet {
+	+execute()
+}
+
+class PetitionInvalid {
+	+execute()
+}
+
+abstract class PetitionLogic {
+	-std::string answer
+	+std::string getFirstLine()
+	+ {abstract} execute()
+	+std::string getAnswer()
+}
+
+class PetitionPost {
+	+execute()
+}
+
+class PetitionParser{
+	-istringstream petition
+	+std::string getMethod()
+	+std::string getFirsLine()
+	+std::string getResource()
+	+std::string getBody()	
+}
+
+class PetitionProcessor{
+	+process()
+	+std::string getAnswer()
+	+std::string getDisplay()
+}
+
+
+class PrintMonitor{
+ -std::mutex m;
+  +print(std::string& in)
+}
+
+class RequestsManager {
+  -bool running
+  +run()
+  +bool done()
+  +stop() 			
+}
+
+class ResourcesRepository {
+	-map resources
+	-std::mutex m
+	+std::string& getRoot()
+	+std::string& Get(std::string key)
+	+post(std::string key, std::string resources)
+}
+
+class Server {
+	-waitCharacter(const char waited)
+	void operator()()
+}
+
+
+Thread ^-- ClientHandler
+Thread ^-- RequestsManager
+
+Client o-- Socket
+
+PrintMonitor -[dashed]-> Lock
+ResourcesRepository -[dashed]-> Lock
+
+ClientHandler o-- Socket
+ClientHandler -[dashed]-> PrintMonitor
+ClientHandler -[dashed]-> ResourcesRepository
+
+PetitionLogic -[dashed]-> ResourcesRepository
+PetitionLogic -[dashed]-> PetitionParser
+
+PetitionLogic ^-- PetitionGet
+PetitionLogic ^-- PetitionPost
+PetitionLogic ^-- PetitionInvalid
+
+PetitionProcessor -[dashed]-> ResourcesRepository
+PetitionProcessor *-- PetitionLogic
+PetitionProcessor *-- PetitionParser
+
+RequestsManager o-- Socket
+RequestsManager *-- ResourcesRepository
+RequestsManager *-- PrintMonitor
+
+Server *-- RequestsManager
+
+ClientHandler "0..*" --* RequestsManager
+
+
+
+@enduml
