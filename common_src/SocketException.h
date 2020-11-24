@@ -2,8 +2,8 @@
 // Created by riedel on 7/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_SOCKETEXCEPTION_H
-#define INC_7542_TALLER_PAGES_SOCKETEXCEPTION_H
+#ifndef COMMON_SRC_SOCKETEXCEPTION_H_
+#define COMMON_SRC_SOCKETEXCEPTION_H_
 
 #include <exception>
 #include <string>
@@ -17,4 +17,4 @@ class SocketException: public std::exception {
 };
 
 
-#endif //INC_7542_TALLER_PAGES_SOCKETEXCEPTION_H
+#endif  // COMMON_SRC_SOCKETEXCEPTION_H_

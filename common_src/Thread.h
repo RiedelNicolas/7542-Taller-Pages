@@ -2,17 +2,17 @@
 // Created by riedel on 2/11/20.
 //
 
-#ifndef THREAD_H_
-#define THREAD_H_
+#ifndef COMMON_SRC_THREAD_H_
+#define COMMON_SRC_THREAD_H_
 
 
 #include <thread>
 // Clase abstracta Thread.
 // Fuertemente basada en la brindada por la catedra.
 class Thread {
-private:
+ private:
     std::thread thread;
-public:
+ public:
     Thread() = default;
     void start();
     void join();
@@ -26,5 +26,4 @@ public:
     Thread& operator=(Thread&& other);
 };
 
-
-#endif  // THREAD_H_
+#endif  // COMMON_SRC_THREAD_H_
