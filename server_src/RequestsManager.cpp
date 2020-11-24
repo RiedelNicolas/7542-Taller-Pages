@@ -16,7 +16,6 @@ RequestsManager::RequestsManager(const std::string& port,
 }
 
 void RequestsManager::run() {
-
     try {
         while ( this->running ) {
             Socket peer = this->socket.acceptOne();
