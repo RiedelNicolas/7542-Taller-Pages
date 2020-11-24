@@ -7,6 +7,7 @@
 
 
 #include <sstream>
+#include <atomic>
 #include "../common_src/Thread.h"
 #include "../common_src/Socket.h"
 #include "PrintMonitor.h"
@@ -16,7 +17,7 @@
 class ClientHandler : public Thread {
  private:
     Socket socket;
-    bool running;
+    std::atomic<bool> running;
     PrintMonitor& printer;
     ResourcesRepository& resources;
     std::string receivePetition();

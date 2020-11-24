@@ -5,7 +5,7 @@
 #ifndef INC_7542_TALLER_PAGES_REQUESTSMANAGER_H
 #define INC_7542_TALLER_PAGES_REQUESTSMANAGER_H
 
-#include <vector>
+#include <list>
 #include "../common_src/Thread.h"
 #include "../common_src/Socket.h"
 #include "ClientHandler.h"
@@ -14,11 +14,11 @@
 class RequestsManager: public Thread {
  private:
     Socket socket;
-    bool running;
+    std::atomic<bool> running;
     PrintMonitor printer;
-    std::vector<Thread*> clients;
+    std::list<ClientHandler*> clients;
     ResourcesRepository resources;
-    void clean();
+    void cleanFinished();
     void joinAll();
  public:
     RequestsManager(const std::string& port, const std::string& path);

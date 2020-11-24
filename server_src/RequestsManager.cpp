@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include "RequestsManager.h"
 #include "PrintMonitor.h"
 
@@ -17,10 +18,10 @@ RequestsManager::RequestsManager(const std::string& port, const std::string& pat
 void RequestsManager::run() {
     while( this->running ) {
         Socket peer = this->socket.acceptOne();
-        this->clean();
+        this->cleanFinished();
         if ( peer.valid() ) {
-            this->clients.push_back( new ClientHandler(std::move(peer),
-                                                       printer, resources ) );
+            this->clients.push_back( new ClientHandler
+                (std::move(peer),printer, resources ) );
             clients.back()->start();
         } else {
         this->running = false;
@@ -29,26 +30,27 @@ void RequestsManager::run() {
     this->joinAll();
 }
 
+bool clientReaper(ClientHandler* clientHandler){
+    if(clientHandler->done()){
+        clientHandler->join();
+        delete clientHandler;
+        return true;
+    }
+    return false;
+}
+
+void RequestsManager::cleanFinished() {
+    this->clients.erase(std::remove_if(clients.begin(),
+                                       clients.end(),clientReaper ),
+                                                clients.end());
+}
+
 
 void RequestsManager::joinAll() {
 
-    for(size_t i = 0; i < clients.size(); i++ ){
-        if(clients[i] == nullptr) continue;
-        clients[i]->join();
-        delete clients[i];
-        clients[i] = nullptr;
-    }
-}
-
-void RequestsManager::clean() {
-    for(size_t i = 0; i < clients.size(); i++ ){
-        if(clients[i] == nullptr) continue;
-
-        if( clients[i]->done() ){
-            clients[i]->join();
-            delete clients[i];
-            clients[i] = nullptr;
-        }
+    for (auto i :  clients) {
+        i->join();
+        delete i;
     }
 }
 
@@ -60,4 +62,5 @@ void RequestsManager::stop() {
     socket.close();
     this->running = false;
 }
+
 
