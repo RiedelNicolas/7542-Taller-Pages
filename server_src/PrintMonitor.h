@@ -12,7 +12,7 @@ class PrintMonitor {
  private:
     std::mutex m;
  public:
-    void print(std::string in);
+    void print(const std::string& in);
 };
 
 

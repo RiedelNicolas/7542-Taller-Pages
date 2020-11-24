@@ -1,9 +1,8 @@
 //
 // Created by riedel on 8/11/20.
 //
-
-#include <iostream>
-#include <fstream>
+#include <string>
+#include <utility>
 #include <algorithm>
 #include "RequestsManager.h"
 #include "PrintMonitor.h"
@@ -17,12 +16,12 @@ RequestsManager::RequestsManager(const std::string& port,
 }
 
 void RequestsManager::run() {
-    while( this->running ) {
+    while ( this->running ) {
         Socket peer = this->socket.acceptOne();
         this->cleanFinished();
         if ( peer.valid() ) {
-            this->clients.push_back( new ClientHandler
-                (std::move(peer),printer, resources ) );
+            this->clients.push_back(new ClientHandler
+                (std::move(peer), printer, resources));
             clients.back()->start();
         } else {
         this->running = false;
@@ -31,8 +30,8 @@ void RequestsManager::run() {
     this->joinAll();
 }
 
-bool clientReaper(ClientHandler* clientHandler){
-    if(clientHandler->done()){
+bool clientReaper(ClientHandler* clientHandler) {
+    if (clientHandler->done()) {
         clientHandler->join();
         delete clientHandler;
         return true;
@@ -42,8 +41,8 @@ bool clientReaper(ClientHandler* clientHandler){
 
 void RequestsManager::cleanFinished() {
     this->clients.erase(std::remove_if(clients.begin(),
-                                       clients.end(),clientReaper ),
-                                                clients.end());
+                                       clients.end(), clientReaper),
+                                    clients.end());
 }
 
 

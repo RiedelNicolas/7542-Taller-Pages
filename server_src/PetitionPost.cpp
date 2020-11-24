@@ -1,7 +1,7 @@
 //
 // Created by riedel on 22/11/20.
 //
-
+#include <string>
 #include "PetitionPost.h"
 
 void PetitionPost::execute() {

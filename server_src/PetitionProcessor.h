@@ -2,8 +2,8 @@
 // Created by riedel on 22/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_PETITIONPROCESSOR_H
-#define INC_7542_TALLER_PAGES_PETITIONPROCESSOR_H
+#ifndef SERVER_SRC_PETITIONPROCESSOR_H_
+#define SERVER_SRC_PETITIONPROCESSOR_H_
 
 
 #include <string>
@@ -12,9 +12,9 @@
 
 class PetitionProcessor {
  private:
- ResourcesRepository& resources;
- PetitionParser parser;
- PetitionLogic* petitionLogic;
+    ResourcesRepository& resources;
+    PetitionParser parser;
+    PetitionLogic* petitionLogic;
  public:
     PetitionProcessor(ResourcesRepository& resources,
                       const std::string& petition);
@@ -25,4 +25,4 @@ class PetitionProcessor {
 };
 
 
-#endif //INC_7542_TALLER_PAGES_PETITIONPROCESSOR_H
+#endif  // SERVER_SRC_PETITIONPROCESSOR_H_

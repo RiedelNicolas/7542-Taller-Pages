@@ -2,10 +2,11 @@
 // Created by riedel on 8/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_REQUESTSMANAGER_H
-#define INC_7542_TALLER_PAGES_REQUESTSMANAGER_H
+#ifndef SERVER_SRC_REQUESTSMANAGER_H_
+#define SERVER_SRC_REQUESTSMANAGER_H_
 
 #include <list>
+#include <string>
 #include "../common_src/Thread.h"
 #include "../common_src/Socket.h"
 #include "ClientHandler.h"
@@ -28,4 +29,4 @@ class RequestsManager: public Thread {
 };
 
 
-#endif //INC_7542_TALLER_PAGES_REQUESTSMANAGER_H
+#endif  // SERVER_SRC_REQUESTSMANAGER_H_

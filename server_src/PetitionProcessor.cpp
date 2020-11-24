@@ -13,16 +13,14 @@
 PetitionProcessor::PetitionProcessor(ResourcesRepository &resources,
                                      const std::string &petition)
                                             :resources(resources),
-                                            parser(petition){
+                                            parser(petition) {
     std::string methodId = parser.getMethod();
 
-    if (methodId == GET_ID ) {
+    if ( methodId == GET_ID ) {
         petitionLogic = new PetitionGet(resources, parser);
-    }
-    else if (methodId == POST_ID ){
+    } else if ( methodId == POST_ID ) {
         petitionLogic = new PetitionPost(resources, parser);
-    }
-    else{
+    } else {
         petitionLogic = new PetitionInvalid(resources, parser);
     }
 }

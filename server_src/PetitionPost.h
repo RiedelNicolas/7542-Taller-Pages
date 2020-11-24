@@ -2,8 +2,8 @@
 // Created by riedel on 22/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_PETITIONPOST_H
-#define INC_7542_TALLER_PAGES_PETITIONPOST_H
+#ifndef SERVER_SRC_PETITIONPOST_H_
+#define SERVER_SRC_PETITIONPOST_H_
 
 
 #include "PetitionLogic.h"
@@ -11,9 +11,9 @@
 class PetitionPost  : public PetitionLogic  {
  public:
     PetitionPost(ResourcesRepository &resources, PetitionParser &parser) :
-    PetitionLogic(resources, parser ){}
+    PetitionLogic(resources, parser ) {}
     void execute() override;
 };
 
 
-#endif //INC_7542_TALLER_PAGES_PETITIONPOST_H
+#endif  // SERVER_SRC_PETITIONPOST_H_

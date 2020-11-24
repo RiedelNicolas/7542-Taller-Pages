@@ -3,10 +3,11 @@
 //
 
 #include <iostream>
+#include <string>
 #include "PrintMonitor.h"
 #include "../common_src/Lock.h"
 
-void PrintMonitor::print(std::string in) {
+void PrintMonitor::print(const std::string& in) {
     Lock b(this->m);
     std::cout << in << std::endl;
 }
