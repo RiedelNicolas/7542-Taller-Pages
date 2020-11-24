@@ -2,10 +2,10 @@
 // Created by riedel on 13/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_PETITIONPARSER_H
-#define INC_7542_TALLER_PAGES_PETITIONPARSER_H
+#ifndef SERVER_SRC_PETITIONPARSER_H_
+#define SERVER_SRC_PETITIONPARSER_H_
 
-
+#include <string>
 #include <sstream>
 
 class PetitionParser {
@@ -20,4 +20,4 @@ class PetitionParser {
     std::string getBody();
 };
 
-#endif //INC_7542_TALLER_PAGES_PETITIONPARSER_H
+#endif  // SERVER_SRC_PETITIONPARSER_H_

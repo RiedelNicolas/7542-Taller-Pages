@@ -2,12 +2,13 @@
 // Created by riedel on 8/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_CLIENTHANDLER_H
-#define INC_7542_TALLER_PAGES_CLIENTHANDLER_H
+#ifndef SERVER_SRC_CLIENTHANDLER_H_
+#define SERVER_SRC_CLIENTHANDLER_H_
 
 
 #include <sstream>
 #include <atomic>
+#include <string>
 #include "../common_src/Thread.h"
 #include "../common_src/Socket.h"
 #include "PrintMonitor.h"
@@ -23,7 +24,6 @@ class ClientHandler : public Thread {
     std::string receivePetition();
     void sendResult(const std::string& result);
  public:
-
     ClientHandler(Socket&& peer, PrintMonitor& printer,
                   ResourcesRepository& resources);
     void run() override;
@@ -32,4 +32,4 @@ class ClientHandler : public Thread {
 };
 
 
-#endif //INC_7542_TALLER_PAGES_CLIENTHANDLER_H
+#endif  // SERVER_SRC_CLIENTHANDLER_H_

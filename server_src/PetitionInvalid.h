@@ -2,8 +2,8 @@
 // Created by riedel on 22/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_PETITIONINVALID_H
-#define INC_7542_TALLER_PAGES_PETITIONINVALID_H
+#ifndef SERVER_SRC_PETITIONINVALID_H_
+#define SERVER_SRC_PETITIONINVALID_H_
 
 
 #include "PetitionLogic.h"
@@ -11,9 +11,9 @@
 class PetitionInvalid  : public PetitionLogic  {
  public:
     PetitionInvalid(ResourcesRepository &resources, PetitionParser &parser) :
-    PetitionLogic(resources, parser ){}
+                                    PetitionLogic(resources, parser) {}
     void execute() override;
 };
 
 
-#endif //INC_7542_TALLER_PAGES_PETITIONINVALID_H
+#endif  // SERVER_SRC_PETITIONINVALID_H_

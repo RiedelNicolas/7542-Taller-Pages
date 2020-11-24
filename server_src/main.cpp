@@ -5,8 +5,8 @@
 #define POSPATH 2
 #define POSPORT 1
 
-int main(int argc, char *argv[]){
-    if (argc != VALID_ARGS ) {
+int main(int argc, char *argv[]) {
+    if ( argc != VALID_ARGS ) {
         return  -1;
     }
     try {
@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
         server();
     } catch (std::exception& e) {
         std::cerr << e.what() << std::endl;
-    } catch(...){
+    } catch(...) {
         std::cerr << "Unknown error"<< std::endl;
     }
     return 0;
