@@ -17,15 +17,19 @@ class Socket {
     explicit Socket(const int fd);
 
  public:
+    // default constructor.
     Socket();
+    // movement constructor.
     Socket(Socket&&) noexcept;
-    void connectTo(std::string host, std::string port);
-    void bindToPort(std::string port);
+    // Connects to the specified host and port.
+    void connectTo(const std::string& host, const std::string& port);
+    // Binds to the specified port.
+    void bindToPort(const std::string& port);
     void listenIncoming();
     Socket acceptOne();
-    void send(const char* buffer, const size_t len);
-    void send(std:: string string);
-    ssize_t receive(const char* buffer, const size_t len);
+    void send(const char* buffer, const size_t& len);
+    void send(const std:: string& string);
+    ssize_t receive(const char* buffer, const size_t& len);
     void receive(std::string& string);
     bool valid();
     void endWriting();

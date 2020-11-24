@@ -24,7 +24,7 @@ Socket::Socket() {
 Socket::Socket(int fd) : fd(fd) {
 }
 
-void Socket::connectTo(std::string host, std::string port) {
+void Socket::connectTo(const std::string& host, const std::string& port) {
     struct addrinfo  *result, *current;
     _getaddrinfo(&result, port.c_str(), host.c_str());
     for (current = result; current !=NULL ; current = current->ai_next) {
@@ -41,7 +41,7 @@ void Socket::connectTo(std::string host, std::string port) {
     }
 }
 
-void Socket::bindToPort(std::string port) {
+void Socket::bindToPort(const std::string& port) {
     struct addrinfo  *result, *current;
     _getaddrinfo(&result, port.c_str());
     for (current = result; current != NULL; current=current->ai_next) {
@@ -70,7 +70,7 @@ Socket Socket::acceptOne() {
     return Socket(peer);  // RVO
 }
 
-void Socket::send(const char *buffer, const size_t len) {
+void Socket::send(const char *buffer, const size_t& len) {
     ssize_t sent = 0;
     while (sent < (ssize_t) len) {
         ssize_t current = ::send(this->fd, buffer + sent,
@@ -80,7 +80,7 @@ void Socket::send(const char *buffer, const size_t len) {
     }
 }
 
-ssize_t Socket::receive(const char *buffer, const size_t len) {
+ssize_t Socket::receive(const char *buffer, const size_t& len) {
     ssize_t received = 0;
     while (received < (ssize_t) len) {
         ssize_t current = recv(this->fd, (void *) &buffer[received],
@@ -126,7 +126,7 @@ void Socket::receive(std::string &string) {
     } while (read == BUFFER_LEN);
 }
 
-void Socket::send(std::string string) {
+void Socket::send(const std::string& string) {
     this->send(string.c_str(), string.length());
 }
 
