@@ -9,20 +9,19 @@
 #include <mutex>
 
 // Clase utilizada para proteger las Race Conditions.
-class Bloquear {
+class Lock {
  private:
     std::mutex &mut;
  public:
     // Constructor Protege.
-    explicit Bloquear(std::mutex &mut);
+    explicit Lock(std::mutex &mut);
     // El destructor desbloquea el mutex.
-    ~Bloquear();
+    ~Lock();
  private:
-    Bloquear(const Bloquear&) = delete;
-    Bloquear& operator=(const Bloquear&) = delete;
-    Bloquear(Bloquear&&) = delete;
-    Bloquear& operator=(Bloquear&&) = delete;
+    Lock(const Lock&) = delete;
+    Lock& operator=(const Lock&) = delete;
+    Lock(Lock&&) = delete;
+    Lock& operator=(Lock&&) = delete;
 };
-
 
 #endif  // BLOQUEAR_H_

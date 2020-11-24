@@ -4,9 +4,9 @@
 
 #include <iostream>
 #include "PrintMonitor.h"
-#include "../common_src/Bloquear.h"
+#include "../common_src/Lock.h"
 
 void PrintMonitor::print(std::string in) {
-    Bloquear b(this->m);
+    Lock b(this->m);
     std::cout << in << std::endl;
 }
