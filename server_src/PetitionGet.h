@@ -7,9 +7,11 @@
 
 
 #include "PetitionLogic.h"
-
+  // Derived from petition Logic.
+  // Implements the logic of answering a GET Petition.
 class PetitionGet : public PetitionLogic {
  public:
+    // Calls the base constructor.
     PetitionGet(ResourcesRepository &resources, PetitionParser &parser) :
                                 PetitionLogic(resources, parser ) {}
     void execute() override;

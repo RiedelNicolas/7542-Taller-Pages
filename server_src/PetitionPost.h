@@ -7,7 +7,8 @@
 
 
 #include "PetitionLogic.h"
-
+// Derived from petition Logic.
+// Implements the logic of answering a POST Petition.
 class PetitionPost  : public PetitionLogic  {
  public:
     PetitionPost(ResourcesRepository &resources, PetitionParser &parser) :

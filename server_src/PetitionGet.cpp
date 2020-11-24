@@ -16,7 +16,7 @@ void PetitionGet::execute() {
             answer.append("\n");
             answer.append(resources.get(resource));
         } catch (const std::out_of_range& oor) {
-         answer = "HTTP/1.1 404 NOT FOUND\n\n";
+            answer = "HTTP/1.1 404 NOT FOUND\n\n";
         }
     }
 }
