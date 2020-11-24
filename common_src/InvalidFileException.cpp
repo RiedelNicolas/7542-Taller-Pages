@@ -8,5 +8,6 @@ const char *InvalidFileException::what() const noexcept {
     return this->error.c_str();
 }
 
-InvalidFileException::InvalidFileException(const std::string& error): error(error) {
+InvalidFileException::InvalidFileException(const std::string& error)
+                                                    : error(error) {
 }
