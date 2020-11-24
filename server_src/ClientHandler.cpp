@@ -21,6 +21,7 @@ void ClientHandler::run() {
         std::cerr << "Unknown error"<< std::endl;
     }
     this->stop();
+
 }
 
 void ClientHandler::stop() {
