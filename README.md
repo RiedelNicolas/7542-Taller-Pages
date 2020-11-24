@@ -88,9 +88,21 @@ Ocurrió un error en la utilización de los sockets.
 
 ## Diagramas :
 
+Diagrama de clases General : 
+
+![](Diagramas/diagramaDeClases.png)
 
 
-## Solución a los issues:
+
+Diagrama de Secuencia, punto de vista cliente : 
+
+![](Diagramas/diagramaCliente.png)
+
+Diagrama de Secuencia, punto de vista Servidor, caso general : 
+
+![](Diagramas/diagramaServerGeneral.png)
+
+## Solución a los issues :
 
 1.
 
