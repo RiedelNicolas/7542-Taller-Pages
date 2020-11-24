@@ -120,11 +120,17 @@ Ocurrió un error en la utilización de los sockets.
 
 ​								Se cambio la implementación del Thread-Reaper, ademas se fuerza el stop de los threads cuando se cierra el socket aceptador. 
 
-5. ![](img/issue5.png)
+5.
 
-   ​					Comprendo lo que esta mal en este tipo de casos, se corrigen.
 
-   
+
+
+
+​			![](img/issue5.png)
+
+​					Comprendo lo que esta mal en este tipo de casos, se corrigen.
+
+
 
 6.
 
