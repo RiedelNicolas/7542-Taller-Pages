@@ -48,7 +48,7 @@ void RequestsManager::cleanFinished() {
 
 void RequestsManager::joinAll() {
     for (auto i :  clients) {
-        if( !i->done() ){
+        if ( !i->done() ) {
             i->stop();
         }
         i->join();

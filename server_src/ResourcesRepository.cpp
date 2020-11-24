@@ -18,7 +18,7 @@ ResourcesRepository::ResourcesRepository(const std::string& rootPath) {
     this->root = sstr.str();
 }
 
-const std::string &ResourcesRepository::getRoot() {
+const std::string &ResourcesRepository::getRoot() const {
     return root;
 }
 
