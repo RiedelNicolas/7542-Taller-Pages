@@ -8,7 +8,7 @@
 
 #include <exception>
 #include <string>
-
+  // The resource file could not be found.
 class InvalidFileException: public std::exception {
  private:
     std::string error;
