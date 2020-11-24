@@ -22,7 +22,7 @@ void Client::readPetition() {
     petition << std::cin.rdbuf();
 }
 
-void Client::showResult() {
+void Client::showResult()const noexcept {
     std::cout << result;
 }
 

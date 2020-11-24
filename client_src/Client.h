@@ -17,7 +17,7 @@ class Client {
     std::string result;
     void connect(char* host, char* port);
     void readPetition();
-    void showResult();
+    void showResult() const noexcept;
     void sendPetition();
     void receiveResult();
 
