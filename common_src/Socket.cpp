@@ -107,13 +107,6 @@ bool Socket::valid() {
     return (this->fd != INVALID_FD);
 }
 
-Socket::~Socket() {
-    if( this->valid() ){
-        this->shutDown(SHUT_RDWR);
-        ::close(this->fd);
-        this->fd = -1;
-    }
-}
 
 void Socket::shutDown(const int mode) {
     shutdown(this->fd, mode);
@@ -142,6 +135,9 @@ Socket::Socket(Socket&& in) noexcept{
 }
 
 Socket &Socket::operator=(Socket&& in) noexcept {
+    if(this == &in){
+        return *this;
+    }
     this->fd = in.fd;
     in.fd = INVALID_FD;
     return *this;
@@ -151,10 +147,13 @@ void Socket::close(){
     if( this->valid() ){
         this->shutDown(SHUT_RDWR);
         ::close(this->fd);
-        this->fd = -1;
+        this->fd = INVALID_FD;
     }
 }
 
+Socket::~Socket() {
+    this->close();
+}
 
 
 
