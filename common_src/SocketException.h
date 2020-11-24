@@ -7,7 +7,7 @@
 
 #include <exception>
 #include <string>
-
+  // An error using sockets.
 class SocketException: public std::exception {
  private:
     std::string error;

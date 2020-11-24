@@ -104,7 +104,7 @@ void Socket::_getaddrinfo(struct addrinfo **result, const char* port,
     if (error != 0) throw SocketException(  gai_strerror(error) );
 }
 
-bool Socket::valid() {
+bool Socket::valid() const noexcept {
     return (this->fd != INVALID_FD);
 }
 
