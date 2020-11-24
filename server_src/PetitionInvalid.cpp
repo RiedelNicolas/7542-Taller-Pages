@@ -6,4 +6,6 @@
 
 void PetitionInvalid::execute() {
   answer = "HTTP/1.1 405 METHOD NOT ALLOWED\n\n";
+  answer += parser.getMethod();
+  answer += " es un comando desconocido";
 }
