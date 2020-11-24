@@ -92,21 +92,27 @@ Ocurrió un error en la utilización de los sockets.
 
 ## Solución a los issues:
 
-1. ![](img/Issue1.png)
+1.
 
-   ​		Ahora dicho constructor es privado.
+![](img/Issue1.png)
 
-2.   ![](img/Issue2.png)
+​		Ahora dicho constructor es privado.
 
-   ​	                             Luego de ver el ejemplo de la clase, entendí el error y lo cambie por :  
+2. 
 
-   ​                             	![](img/solucion2.png)
-   
-   
-   
-3. ![](img/issue3.png)
+![](img/Issue2.png)
 
-   ​				Según se nos especifico en la clase teníamos permitido usar cualquier chunk size (siempre  y cuando este sea mayor a uno), 1024 bytes me pareció un tamaño  apropiado.
+​	                             Luego de ver el ejemplo de la clase, entendí el error y lo cambie por :  
+
+​                             	![](img/solucion2.png)
+
+
+
+3. 
+
+![](img/issue3.png)
+
+​				Según se nos especifico en la clase teníamos permitido usar cualquier chunk size (siempre  y cuando este sea mayor a uno), 1024 bytes me pareció un tamaño  apropiado.
 
 4.
 
