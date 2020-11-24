@@ -27,7 +27,8 @@ const std::string &ResourcesRepository::get(const std::string &key) {
     return map.at(key); // throws out of range exception if key is not found.
 }
 
-void ResourcesRepository::post(const std::string& key, const std::string& resource) {
+void ResourcesRepository::post(const std::string& key,
+                               const std::string& resource) {
     Bloquear b(this->m);
     this->map[key] = resource;
 }

@@ -16,8 +16,9 @@ void Server::operator()() {
     manager.run();
 }
 
-Server::Server(const std::string& port, const std::string& rootPath): port(port),
-                                                                  path(rootPath){
+Server::Server(const std::string& port, const std::string& rootPath)
+                                                        : port(port),
+                                                        path(rootPath){
 }
 
 void Server::waitCharacter(const char waited) {

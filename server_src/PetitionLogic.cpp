@@ -12,8 +12,10 @@ std::string PetitionLogic::getAnswer() {
     return this->answer;
 }
 
-PetitionLogic::PetitionLogic(ResourcesRepository &resources, PetitionParser &parser):
-                                resources(resources),parser(parser){
+PetitionLogic::PetitionLogic(ResourcesRepository &resources,
+                             PetitionParser &parser):
+                             resources(resources),
+                             parser(parser){
 }
 
 

@@ -34,7 +34,8 @@ bool ClientHandler::done() {
 }
 
 ClientHandler::ClientHandler(Socket&& peer, PrintMonitor &printer,
-                             ResourcesRepository &resources): socket(std::move(peer)),
+                             ResourcesRepository &resources):
+                             socket(std::move(peer)),
                              printer(printer),
                              resources(resources){
     this->running = true;

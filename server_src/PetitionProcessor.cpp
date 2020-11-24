@@ -10,7 +10,8 @@
 #define GET_ID "GET"
 #define POST_ID "POST"
 
-PetitionProcessor::PetitionProcessor(ResourcesRepository &resources, const std::string &petition)
+PetitionProcessor::PetitionProcessor(ResourcesRepository &resources,
+                                     const std::string &petition)
                                             :resources(resources),
                                             parser(petition){
     std::string methodId = parser.getMethod();

@@ -8,8 +8,9 @@
 #include "RequestsManager.h"
 #include "PrintMonitor.h"
 
-RequestsManager::RequestsManager(const std::string& port, const std::string& path)
-                                                                :resources(path) {
+RequestsManager::RequestsManager(const std::string& port,
+                                 const std::string& path)
+                                 :resources(path) {
     this->socket.bindToPort(port);
     this->socket.listenIncoming();
     this->running = true;
