@@ -2,8 +2,8 @@
 // Created by riedel on 2/11/20.
 //
 
-#ifndef BLOQUEAR_H_
-#define BLOQUEAR_H_
+#ifndef COMMON_SRC_LOCK_H_
+#define COMMON_SRC_LOCK_H_
 
 
 #include <mutex>
@@ -24,4 +24,4 @@ class Lock {
     Lock& operator=(Lock&&) = delete;
 };
 
-#endif  // BLOQUEAR_H_
+#endif  // COMMON_SRC_LOCK_H_

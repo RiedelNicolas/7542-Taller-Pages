@@ -2,20 +2,20 @@
 // Created by riedel on 20/11/20.
 //
 
-#ifndef INC_7542_TALLER_PAGES_INVALIDFILEEXCEPTION_H
-#define INC_7542_TALLER_PAGES_INVALIDFILEEXCEPTION_H
+#ifndef COMMON_SRC_INVALIDFILEEXCEPTION_H_
+#define COMMON_SRC_INVALIDFILEEXCEPTION_H_
 
 
 #include <exception>
 #include <string>
 
 class InvalidFileException: public std::exception {
-private:
+ private:
     std::string error;
-public:
-    explicit  InvalidFileException (std::string error);
+ public:
+    explicit  InvalidFileException(std::string error);
     const char* what() const noexcept override;
 };
 
 
-#endif //INC_7542_TALLER_PAGES_INVALIDFILEEXCEPTION_H
+#endif  // COMMON_SRC_INVALIDFILEEXCEPTION_H_
