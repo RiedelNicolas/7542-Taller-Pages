@@ -42,7 +42,7 @@ bool clientReaper(ClientHandler* clientHandler) {
 void RequestsManager::cleanFinished() {
     this->clients.erase(std::remove_if(clients.begin(),
                                        clients.end(), clientReaper),
-                                    clients.end());
+                                       clients.end());
 }
 
 
