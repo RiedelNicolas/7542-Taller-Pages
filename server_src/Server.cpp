@@ -17,7 +17,7 @@ Server::Server(const std::string& port, const std::string& rootPath)
                                                         : port(port),
                                                         path(rootPath) {
 }
-
+  // Blocking function, waits for a specified character.
 void Server::waitCharacter(const char waited) {
     char c;
     do {

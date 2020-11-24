@@ -16,7 +16,7 @@ class Server {
     void waitCharacter(const char waited);
  public:
     explicit Server(const std::string& port, const std::string& rootPath);
-
+    // runs the logic of the server.
     void operator()();
 };
 
