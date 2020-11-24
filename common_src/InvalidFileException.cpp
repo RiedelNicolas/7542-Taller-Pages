@@ -9,5 +9,4 @@ const char *InvalidFileException::what() const noexcept {
 }
 
 InvalidFileException::InvalidFileException(std::string error): error(error) {
-
 }
