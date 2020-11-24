@@ -123,12 +123,9 @@ Ocurrió un error en la utilización de los sockets.
 5.
 
 
+​	![](img/issue5.png)
 
-
-
-​			![](img/issue5.png)
-
-​					Comprendo lo que esta mal en este tipo de casos, se corrigen.
+ 	Comprendo lo que esta mal en este tipo de casos, se corrigen.
 
 
 
